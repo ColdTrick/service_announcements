@@ -1,0 +1,21 @@
+{
+	"name": "coldtrick/service_announcements",
+	"description": "Manage announcements around services",
+	"type": "elgg-plugin",
+	"keywords": ["elgg", "plugin"],
+	"license": "GPL-2.0",
+	"support": {
+		"source": "https://github.com/ColdTrick/service_announcements",
+		"issues": "https://github.com/ColdTrick/service_announcements/issues"
+	},
+	"require": {
+		"composer/installers": "^1.0.8"
+	},
+	"require-dev": {
+		"coldtrick/sniffs": "dev-master",
+		"coldtrick/releases": "dev-master"
+	},
+	"conflict": {
+		"elgg/elgg": "<2.3"
+	}
+}
