@@ -5,4 +5,4 @@
 [![Latest Stable Version](https://poser.pugx.org/coldtrick/service_announcements/v/stable.svg)](https://packagist.org/packages/coldtrick/service_announcements)
 [![License](https://poser.pugx.org/coldtrick/service_announcements/license.svg)](https://packagist.org/packages/coldtrick/service_announcements)
 
-Manage announcements around services
+Manage announcements (incident, maintenance) around services

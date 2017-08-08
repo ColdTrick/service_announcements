@@ -1,6 +1,6 @@
 {
 	"name": "coldtrick/service_announcements",
-	"description": "Manage announcements around services",
+	"description": "Manage announcements (incident, maintenance) around services",
 	"type": "elgg-plugin",
 	"keywords": ["elgg", "plugin"],
 	"license": "GPL-2.0",

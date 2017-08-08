@@ -4,7 +4,7 @@
 	<id>service_announcements</id>
 	<author>ColdTrick IT Solutions</author>
 	<version>0.1</version>
-	<description>Manage announcements around services</description>
+	<description>Manage announcements (incident, maintenance) around services</description>
 	<website>http://www.coldtrick.com/</website>
 	<repository>https://github.com/ColdTrick/service_announcements</repository>
 	<bugtracker>https://github.com/ColdTrick/service_announcements/issues</bugtracker>
