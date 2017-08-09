@@ -21,6 +21,9 @@ return [
 	// menus
 	'service_announcements:menu:site:service_announcements' => 'Service announcements',
 	
+	'service_announcements:menu:page:service_announcements' => 'Service announcements',
+	'service_announcements:menu:page:services' => 'Services',
+	
 	// pages
 	'service_announcements:service_announcements:all' => "All service announcements",
 	'service_announcements:services:all' => "All services",
