@@ -44,6 +44,6 @@ if (!$entity->save()) {
 	return elgg_error_response(elgg_echo('save:fail'));
 }
 
-elgg_clear_sticky_form('service/edit');
+elgg_clear_sticky_form('services/edit');
 
 return elgg_ok_response('', elgg_echo('save:success'), $entity->getURL());

@@ -93,6 +93,8 @@ function service_announcements_prepare_service_vars(Service $entity = null) {
 		foreach ($sticky_vars as $name => $value) {
 			$result[$name] = $value;
 		}
+		
+		elgg_clear_sticky_form('services/edit');
 	}
 	
 	return $result;
