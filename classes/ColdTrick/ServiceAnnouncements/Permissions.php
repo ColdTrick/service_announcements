@@ -30,9 +30,7 @@ class Permissions {
 			return true;
 		}
 		
-		// @todo allow support staff to create Services
-		
-		return false;
+		return service_announcements_is_staff($user->guid);
 	}
 	
 	/**
@@ -61,8 +59,6 @@ class Permissions {
 			return true;
 		}
 		
-		// @todo allow support staff to create Services
-		
-		return false;
+		return service_announcements_is_staff($user->guid);
 	}
 }
