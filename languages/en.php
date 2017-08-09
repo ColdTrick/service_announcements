@@ -18,6 +18,9 @@ return [
 	'service_announcements:breadcrumb:service_announcements:all' => "Service announcements",
 	'service_announcements:breadcrumb:services:all' => "Services",
 	
+	// menus
+	'service_announcements:menu:site:service_announcements' => 'Service announcements',
+	
 	// pages
 	'service_announcements:service_announcements:all' => "All service announcements",
 	'service_announcements:services:all' => "All services",

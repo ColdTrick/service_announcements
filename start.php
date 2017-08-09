@@ -23,6 +23,8 @@ function service_announcements_init() {
 	elgg_register_plugin_hook_handler('container_permissions_check', 'object', '\ColdTrick\ServiceAnnouncements\Permissions::serviceContainerPermissions');
 	elgg_register_plugin_hook_handler('container_permissions_check', 'object', '\ColdTrick\ServiceAnnouncements\Permissions::serviceAnnouncementContainerPermissions');
 	
+	elgg_register_plugin_hook_handler('register', 'menu:site', '\ColdTrick\ServiceAnnouncements\Sitemenu::registerServiceAnnouncements');
+	
 	// register actions
 	elgg_register_action('services/edit', dirname(__FILE__) . '/actions/services/edit.php');
 	elgg_register_action('services/delete', dirname(__FILE__) . '/actions/services/delete.php');
