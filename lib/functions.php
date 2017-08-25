@@ -99,3 +99,65 @@ function service_announcements_prepare_service_vars(Service $entity = null) {
 	
 	return $result;
 }
+
+/**
+ * Prepare the form vars for add/edit a ServiceAnnouncement
+ *
+ * @param ServiceAnnouncement $entity (optional) the entity to edit
+ *
+ * @return array
+ */
+function service_announcements_prepare_service_announcement_vars(ServiceAnnouncement $entity = null) {
+	
+	// defaults
+	$result = [
+		'title' => '',
+		'description' => '',
+		'access_id' => get_default_access(null, [
+			'entity_type' => 'object',
+			'entity_subtype' => ServiceAnnouncement::SUBTYPE,
+			'container_guid' => elgg_get_site_entity()->guid,
+		]),
+		'tags' => [],
+		'startdate' => null,
+		'enddate' => null,
+		'announcement_type' => '',
+		'priority' => '',
+		'services' => (array) get_input('services', []),
+	];
+	
+	// edit
+	if ($entity instanceof ServiceAnnouncement) {
+		foreach ($result as $name => $value) {
+			
+			switch ($name) {
+				case 'services':
+					$result[$name] = $entity->getServices([
+						'limit' => false,
+						'callback' => function($row) {
+							return (int) $row->guid;
+						},
+					]);
+					
+					break;
+				default:
+					$result[$name] = $entity->$name;
+					break;
+			}
+		}
+		
+		$result['entity'] = $entity;
+	}
+	
+	// sticky form vars
+	$sticky_values = elgg_get_sticky_values('service_announcements/edit');
+	if (!empty($sticky_values)) {
+		foreach ($sticky_values as $name => $value) {
+			$result[$name] = $value;
+		}
+		
+		elgg_clear_sticky_form('service_announcements/edit');
+	}
+	
+	return $result;
+}

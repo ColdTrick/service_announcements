@@ -15,6 +15,9 @@ elgg_register_event_handler('init', 'system', 'service_announcements_init');
  */
 function service_announcements_init() {
 	
+	// css/js
+	elgg_extend_view('elgg.css', 'css/service_announcements/site.css');
+	
 	// register page handlers
 	elgg_register_page_handler('services', '\ColdTrick\ServiceAnnouncements\Router::services');
 	elgg_register_page_handler('service_announcements', '\ColdTrick\ServiceAnnouncements\Router::serviceAnnouncements');
@@ -30,4 +33,7 @@ function service_announcements_init() {
 	// register actions
 	elgg_register_action('services/edit', dirname(__FILE__) . '/actions/services/edit.php');
 	elgg_register_action('services/delete', dirname(__FILE__) . '/actions/services/delete.php');
+	
+	elgg_register_action('service_announcements/edit', dirname(__FILE__) . '/actions/service_announcements/edit.php');
+	elgg_register_action('service_announcements/delete', dirname(__FILE__) . '/actions/service_announcements/delete.php');
 }

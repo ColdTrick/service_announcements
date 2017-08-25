@@ -1,0 +1,8 @@
+/*
+ Site annoucements site CSS
+*/
+.service-announcements-service-full-announcements {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 10px;
+}
