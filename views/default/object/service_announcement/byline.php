@@ -12,14 +12,14 @@ if (!($entity instanceof ServiceAnnouncement)) {
 
 $byline = [];
 
-if ($entity->startdate) {
+if (!empty($entity->startdate)) {
 	$start = elgg_echo('service_announcements:service_announcements:startdate');
 	$start .= ': ' . date('d/m/Y', $entity->startdate);
 	
 	$byline[] = elgg_format_element('span', [], $start);
 }
 
-if ($entity->enddate) {
+if (!empty($entity->enddate)) {
 	$end = elgg_echo('service_announcements:service_announcements:enddate');
 	$end .= ': ' . date('d/m/Y', $entity->enddate);
 	
