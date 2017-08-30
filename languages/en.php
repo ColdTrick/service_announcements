@@ -29,8 +29,11 @@ return [
 	'service_announcements:menu:title:service_announcement:status:update' => "Status update",
 	'service_announcements:menu:title:service_announcement:status:close' => "Close",
 	
+	'service_announcements:menu:filter:scheduled' => "Scheduled",
+	
 	// pages
 	'service_announcements:service_announcements:all' => "All service announcements",
+	'service_announcements:service_announcements:scheduled' => "Scheduled service announcements",
 	'service_announcements:service_announcements:add' => "Add a service announcement",
 	'service_announcements:service_announcements:edit' => "Edit service announcement: %s",
 	'service_announcements:service_announcements:status_update' => "Status update for: %s",

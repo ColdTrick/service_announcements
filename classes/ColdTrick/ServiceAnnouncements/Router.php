@@ -93,6 +93,12 @@ class Router {
 				return true;
 				
 				break;
+			case 'scheduled':
+				
+				echo elgg_view_resource('service_announcements/scheduled');
+				return true;
+				
+				break;
 			default:
 				forward('service_announcements/all');
 				break;

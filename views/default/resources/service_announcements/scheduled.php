@@ -1,13 +1,13 @@
 <?php
 
 // breadcrumb
-elgg_push_breadcrumb(elgg_echo('service_announcements:breadcrumb:service_announcements:all'));
+elgg_push_breadcrumb(elgg_echo('service_announcements:breadcrumb:service_announcements:all'), 'service_announcements/all');
 
 // title button
 elgg_register_title_button(null, 'add', 'object', ServiceAnnouncement::SUBTYPE);
 
 // build page elements
-$title = elgg_echo('service_announcements:service_announcements:all');
+$title = elgg_echo('service_announcements:service_announcements:scheduled');
 
 $body = elgg_list_entities_from_metadata([
 	'type' => 'object',
@@ -15,11 +15,11 @@ $body = elgg_list_entities_from_metadata([
 	'metadata_name_value_pairs' => [
 		'name' => 'startdate',
 		'value' => time(),
-		'operand' => '<',
+		'operand' => '>',
 	],
 	'order_by_metadata' => [
 		'name' => 'startdate',
-		'direction' => 'DESC',
+		'direction' => 'ASC',
 		'as' => 'integer',
 	],
 	'no_results' => elgg_echo('notfound'),
@@ -29,6 +29,7 @@ $body = elgg_list_entities_from_metadata([
 $page = elgg_view_layout('content', [
 	'title' => $title,
 	'content' => $body,
+	'filter_context' => 'scheduled',
 ]);
 
 // draw page
