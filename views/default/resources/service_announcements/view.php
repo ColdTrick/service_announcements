@@ -10,6 +10,8 @@ $entity = get_entity($guid);
 elgg_push_breadcrumb(elgg_echo('service_announcements:breadcrumb:service_announcements:all'), 'service_announcements/all');
 elgg_push_breadcrumb($entity->getDisplayName());
 
+service_announcements_register_announcement_title_menu_item($entity);
+
 // build page elements
 $title = $entity->getDisplayName();
 

@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * A service announcement related to services
+ *
+ * @property string $priority          the priority of the announcement
+ * @property string $announcement_type the type of the announcement
+ * @property int    $startdate         startdate of the announcement
+ * @property int    $enddate           enddate of the announcement
+ */
 class ServiceAnnouncement extends ElggObject {
 	
 	const SUBTYPE = 'service_announcement';

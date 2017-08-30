@@ -161,3 +161,47 @@ function service_announcements_prepare_service_announcement_vars(ServiceAnnounce
 	
 	return $result;
 }
+
+/**
+ * Register title menu items for a ServiceAnnouncement
+ *
+ * @param ServiceAnnouncement $entity the announcement
+ *
+ * @return void
+ */
+function service_announcements_register_announcement_title_menu_item(ServiceAnnouncement $entity) {
+	
+	if (!service_announcements_is_staff()) {
+		return;
+	}
+	
+	// add status update
+	elgg_register_menu_item('title', [
+		'name' => 'status_update:update',
+		'text' => elgg_echo('service_announcements:menu:title:service_announcement:status:update'),
+		'href' => elgg_http_add_url_query_elements('ajax/view/service_announcements/service_announcement/status_update', [
+			'type' => 'update',
+			'guid' => $entity->guid,
+		]),
+		'link_class' => 'elgg-button elgg-button-action elgg-lightbox',
+		'data-colorbox-opts' => json_encode([
+			'maxWidth' => '600px',
+		]),
+	]);
+	
+	// close
+	if (empty($entity->enddate)) {
+		elgg_register_menu_item('title', [
+			'name' => 'status_update:close',
+			'text' => elgg_echo('service_announcements:menu:title:service_announcement:status:close'),
+			'href' => elgg_http_add_url_query_elements('ajax/view/service_announcements/service_announcement/status_update', [
+				'type' => 'close',
+				'guid' => $entity->guid,
+			]),
+			'link_class' => 'elgg-button elgg-button-action elgg-lightbox',
+			'data-colorbox-opts' => json_encode([
+				'maxWidth' => '600px',
+			]),
+		]);
+	}
+}

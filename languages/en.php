@@ -26,10 +26,14 @@ return [
 	'service_announcements:menu:page:service_announcements' => 'Service announcements',
 	'service_announcements:menu:page:services' => 'Services',
 	
+	'service_announcements:menu:title:service_announcement:status:update' => "Status update",
+	'service_announcements:menu:title:service_announcement:status:close' => "Close",
+	
 	// pages
 	'service_announcements:service_announcements:all' => "All service announcements",
 	'service_announcements:service_announcements:add' => "Add a service announcement",
 	'service_announcements:service_announcements:edit' => "Edit service announcement: %s",
+	'service_announcements:service_announcements:status_update' => "Status update for: %s",
 	
 	'service_announcements:services:all' => "All services",
 	'service_announcements:services:add' => 'Add a service',
@@ -40,6 +44,9 @@ return [
 	'service_announcements:service_announcements:edit:services:help' => "Please select the services affected.",
 	'service_announcements:service_announcements:startdate' => "Start date",
 	'service_announcements:service_announcements:enddate' => "End date",
+	
+	'service_announcements:status_update:text' => "Status text",
+	'service_announcements:service_announcements:status_update' => "Status updates",
 	
 	// services
 	'service_announcements:service:announcements:current' => "Current announcements",
@@ -60,4 +67,10 @@ return [
 	
 	// river
 	'river:create:object:service_announcement' => "%s made a service announcement: %s",
+	'river:status_update:object:service_announcement' => "%s posted an update on: %s",
+	
+	// actions
+	// status update delete
+	'service_announcements:action:service_announcement:status_update:delete:error' => "An error occured while deleting the status update",
+	'service_announcements:action:service_announcement:status_update:delete:success' => "The status update was deleted",
 ];

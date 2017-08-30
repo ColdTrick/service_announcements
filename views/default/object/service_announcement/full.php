@@ -62,6 +62,17 @@ if (!empty($service_count)) {
 }
 
 // status updates
+$list = elgg_list_annotations([
+	'guid' => $entity->guid,
+	'annotation_names' => [
+		'status_update_update',
+		'status_update_close',
+	],
+	'limit' => false,
+]);
+if (!empty($list)) {
+	$body .= elgg_view_module('aside', elgg_echo('service_announcements:service_announcements:status_update'), $list);
+}
 
 // show full view
 echo elgg_view('object/elements/full', [
