@@ -61,6 +61,8 @@ return [
 	'service_announcements:service:announcements:past' => "Past announcements",
 	'service_announcements:service:announcements:upcomming' => "Upcomming announcements",
 	
+	'service_announcements:services:sidebar:subscriptions' => "Keep me up-to-date",
+	
 	// announcement types
 	'service_announcements:announcement_type' => "Announcement type",
 	'service_announcements:announcement_type:maintenance' => "Maintenance",

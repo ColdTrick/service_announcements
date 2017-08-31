@@ -26,10 +26,13 @@ $title = $entity->getDisplayName();
 
 $body = elgg_view_entity($entity);
 
+$sidebar = elgg_view('service_announcements/services/sidebar', ['entity' => $entity]);
+
 // build page
 $page = elgg_view_layout('content', [
 	'title' => $title,
 	'content' => $body,
+	'sidebar' => $sidebar,
 	'filter' => false,
 ]);
 

@@ -46,9 +46,13 @@ function service_announcements_init() {
 	
 	elgg_register_plugin_hook_handler('entity_types', 'content_subscriptions', '\ColdTrick\ServiceAnnouncements\ContentSubscriptions::registerServiceAnnouncements');
 	
+	// extend views
+	elgg_extend_view('service_announcements/services/sidebar', 'service_announcements/services/sidebar/subscriptions');
+	
 	// register actions
 	elgg_register_action('services/edit', dirname(__FILE__) . '/actions/services/edit.php');
 	elgg_register_action('services/delete', dirname(__FILE__) . '/actions/services/delete.php');
+	elgg_register_action('services/subscriptions', dirname(__FILE__) . '/actions/services/subscriptions.php');
 	
 	elgg_register_action('service_announcements/edit', dirname(__FILE__) . '/actions/service_announcements/edit.php');
 	elgg_register_action('service_announcements/delete', dirname(__FILE__) . '/actions/service_announcements/delete.php');
