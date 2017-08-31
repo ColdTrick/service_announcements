@@ -44,6 +44,8 @@ function service_announcements_init() {
 	elgg_register_plugin_hook_handler('register', 'menu:filter', '\ColdTrick\ServiceAnnouncements\Menu\Filter::serviceAnnouncementsStaff');
 	elgg_register_plugin_hook_handler('register', 'menu:user_hover', '\ColdTrick\ServiceAnnouncements\Menu\UserHover::registerStaff');
 	
+	elgg_register_plugin_hook_handler('entity_types', 'content_subscriptions', '\ColdTrick\ServiceAnnouncements\ContentSubscriptions::registerServiceAnnouncements');
+	
 	// register actions
 	elgg_register_action('services/edit', dirname(__FILE__) . '/actions/services/edit.php');
 	elgg_register_action('services/delete', dirname(__FILE__) . '/actions/services/delete.php');
