@@ -10,6 +10,14 @@ if (empty($title) || empty($services) || empty($startdate)) {
 	return elgg_error_response(elgg_echo('error:missing_data'));
 }
 
+$enddate = get_input('enddate');
+if (!empty($enddate)) {
+	$enddate = (int) $enddate;
+	if ($enddate < $startdate) {
+		return elgg_error_response(elgg_echo('service_announcments:action:service_announcements:edit:error:enddate'));
+	}
+}
+
 $guid = (int) get_input('guid');
 $new = false;
 if (!empty($guid)) {
@@ -33,7 +41,7 @@ $entity->access_id = (int) get_input('access_id');
 $entity->tags = get_input('tags') ? string_to_tag_array(get_input('tags')) : null;
 
 $entity->startdate = $startdate;
-$entity->enddate = get_input('enddate') ? (int) get_input('enddate') : null;
+$entity->enddate = !empty($enddate) ? $enddate : null;
 
 $entity->setServices($services);
 

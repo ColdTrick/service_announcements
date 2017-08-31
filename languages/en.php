@@ -88,4 +88,7 @@ return [
 	'service_announcments:action:service_announcements:admin:toggle_staff:error:assign' => "An error occured while assigning %s to the service announcements staff",
 	'service_announcments:action:service_announcements:admin:toggle_staff:success:unassign' => "%s is no longer part of the service announcements staff",
 	'service_announcments:action:service_announcements:admin:toggle_staff:success:assign' => "%s is now part of the service announcements staff",
+	
+	// service announcement
+	'service_announcments:action:service_announcements:edit:error:enddate' => "The enddate can't be before the startdate",
 ];
