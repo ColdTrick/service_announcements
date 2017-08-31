@@ -73,10 +73,14 @@ echo elgg_view_field([
 
 // announcement type
 echo elgg_view_field([
-	'#type' => 'announcement_type',
+	'#type' => 'select',
 	'#label' => elgg_echo('service_announcements:announcement_type'),
 	'name' => 'announcement_type',
 	'value' => elgg_extract('announcement_type', $vars),
+	'options_values' => [
+		'maintenance' => elgg_echo('service_announcements:announcement_type:maintenance'),
+		'incident' => elgg_echo('service_announcements:announcement_type:incident'),
+	],
 ]);
 
 // priority
