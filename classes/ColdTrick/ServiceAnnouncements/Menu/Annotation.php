@@ -36,7 +36,7 @@ class Annotation {
 		$return_value[] = \ElggMenuItem::factory([
 			'name' => 'delete',
 			'text' => elgg_view_icon('delete'),
-			'href' => elgg_http_add_url_query_elements('action/service_announcements/status_update_delete', [
+			'href' => elgg_http_add_url_query_elements('action/service_announcements/status_update/delete', [
 				'id' => $annotation->id,
 			]),
 			'confirm' => elgg_echo('deleteconfirm'),

@@ -52,8 +52,8 @@ function service_announcements_init() {
 	
 	elgg_register_action('service_announcements/edit', dirname(__FILE__) . '/actions/service_announcements/edit.php');
 	elgg_register_action('service_announcements/delete', dirname(__FILE__) . '/actions/service_announcements/delete.php');
-	elgg_register_action('service_announcements/status_update', dirname(__FILE__) . '/actions/service_announcements/status_update.php');
-	elgg_register_action('service_announcements/status_update_delete', dirname(__FILE__) . '/actions/service_announcements/status_update_delete.php');
+	elgg_register_action('service_announcements/status_update', dirname(__FILE__) . '/actions/service_announcements/status_update/edit.php');
+	elgg_register_action('service_announcements/status_update/delete', dirname(__FILE__) . '/actions/service_announcements/status_update/delete.php');
 	
 	elgg_register_action('service_announcements/admin/toggle_staff', dirname(__FILE__) . '/actions/service_announcements/admin/toggle_staff.php', 'admin');
 }
