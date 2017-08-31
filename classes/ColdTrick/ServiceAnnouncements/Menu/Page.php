@@ -1,8 +1,8 @@
 <?php
 
-namespace ColdTrick\ServiceAnnouncements;
+namespace ColdTrick\ServiceAnnouncements\Menu;
 
-class PageMenu {
+class Page {
 	
 	/**
 	 * Add a menu item to the page menu

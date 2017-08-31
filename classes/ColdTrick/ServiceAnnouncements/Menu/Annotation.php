@@ -1,8 +1,8 @@
 <?php
 
-namespace ColdTrick\ServiceAnnouncements;
+namespace ColdTrick\ServiceAnnouncements\Menu;
 
-class AnnotationMenu {
+class Annotation {
 	
 	/**
 	 * Add delete menu item to annotation menu for status updates

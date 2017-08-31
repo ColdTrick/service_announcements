@@ -1,8 +1,8 @@
 <?php
 
-namespace ColdTrick\ServiceAnnouncements;
+namespace ColdTrick\ServiceAnnouncements\Menu;
 
-class FilterMenu {
+class Filter {
 	
 	/**
 	 * Change the filter menu items on the service announcements page

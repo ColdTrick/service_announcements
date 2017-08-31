@@ -32,11 +32,11 @@ function service_announcements_init() {
 	elgg_register_plugin_hook_handler('container_permissions_check', 'object', '\ColdTrick\ServiceAnnouncements\Permissions::serviceContainerPermissions');
 	elgg_register_plugin_hook_handler('container_permissions_check', 'object', '\ColdTrick\ServiceAnnouncements\Permissions::serviceAnnouncementContainerPermissions');
 	
-	elgg_register_plugin_hook_handler('register', 'menu:site', '\ColdTrick\ServiceAnnouncements\SiteMenu::registerServiceAnnouncements');
-	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\ServiceAnnouncements\PageMenu::registerServices');
-	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\ServiceAnnouncements\PageMenu::registerServiceAnnouncements');
-	elgg_register_plugin_hook_handler('register', 'menu:annotation', '\ColdTrick\ServiceAnnouncements\AnnotationMenu::registerDelete');
-	elgg_register_plugin_hook_handler('register', 'menu:filter', '\ColdTrick\ServiceAnnouncements\FilterMenu::serviceAnnouncements');
+	elgg_register_plugin_hook_handler('register', 'menu:site', '\ColdTrick\ServiceAnnouncements\Menu\Site::registerServiceAnnouncements');
+	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\ServiceAnnouncements\Menu\Page::registerServices');
+	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\ServiceAnnouncements\Menu\Page::registerServiceAnnouncements');
+	elgg_register_plugin_hook_handler('register', 'menu:annotation', '\ColdTrick\ServiceAnnouncements\Menu\Annotation::registerDelete');
+	elgg_register_plugin_hook_handler('register', 'menu:filter', '\ColdTrick\ServiceAnnouncements\Menu\Filter::serviceAnnouncements');
 	
 	// register actions
 	elgg_register_action('services/edit', dirname(__FILE__) . '/actions/services/edit.php');
