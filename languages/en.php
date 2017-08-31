@@ -30,6 +30,10 @@ return [
 	'service_announcements:menu:title:service_announcement:status:close' => "Close",
 	
 	'service_announcements:menu:filter:scheduled' => "Scheduled",
+	'service_announcements:menu:filter:staff' => "Staff",
+	
+	'service_announcements:menu:user_hover:staff:assign' => "Make service announcements staff",
+	'service_announcements:menu:user_hover:staff:unassign' => "Remove service announcments staff",
 	
 	// pages
 	'service_announcements:service_announcements:all' => "All service announcements",
@@ -37,6 +41,7 @@ return [
 	'service_announcements:service_announcements:add' => "Add a service announcement",
 	'service_announcements:service_announcements:edit' => "Edit service announcement: %s",
 	'service_announcements:service_announcements:status_update' => "Status update for: %s",
+	'service_announcements:service_announcements:staff' => "Service announcements staff",
 	
 	'service_announcements:services:all' => "All services",
 	'service_announcements:services:add' => 'Add a service',
@@ -76,4 +81,11 @@ return [
 	// status update delete
 	'service_announcements:action:service_announcement:status_update:delete:error' => "An error occured while deleting the status update",
 	'service_announcements:action:service_announcement:status_update:delete:success' => "The status update was deleted",
+	
+	// toggle staff
+	'service_announcments:action:service_announcements:admin:toggle_staff:error:invalid_user' => "Invalid user supplied for this action",
+	'service_announcments:action:service_announcements:admin:toggle_staff:error:unassign' => "An error occured while removing %s from the service announcements staff",
+	'service_announcments:action:service_announcements:admin:toggle_staff:error:assign' => "An error occured while assigning %s to the service announcements staff",
+	'service_announcments:action:service_announcements:admin:toggle_staff:success:unassign' => "%s is no longer part of the service announcements staff",
+	'service_announcments:action:service_announcements:admin:toggle_staff:success:assign' => "%s is now part of the service announcements staff",
 ];

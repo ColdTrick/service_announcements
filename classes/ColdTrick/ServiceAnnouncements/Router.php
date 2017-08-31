@@ -99,6 +99,12 @@ class Router {
 				return true;
 				
 				break;
+			case 'staff':
+				
+				echo elgg_view_resource('service_announcements/staff');
+				return true;
+				
+				break;
 			default:
 				forward('service_announcements/all');
 				break;

@@ -53,7 +53,17 @@ function service_announcements_is_staff($user_guid = 0) {
 		return in_array($user_guid, $cache);
 	}
 	
-	$cache = [];
+	// fill the cache
+	$cache = elgg_get_entities_from_relationship([
+		'type' => 'user',
+		'limit' => false,
+		'callback' => function($row) {
+			return (int) $row->guid;
+		},
+		'relationship' => SERVICE_ANNOUNCEMENT_STAFF,
+		'relationship_guid' => elgg_get_site_entity()->guid,
+		'inverse_relationship' => true,
+	]);
 	
 	return in_array($user_guid, $cache);
 }
