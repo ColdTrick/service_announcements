@@ -30,6 +30,7 @@ return [
 	'service_announcements:menu:title:service_announcement:status:close' => "Close",
 	
 	'service_announcements:menu:filter:scheduled' => "Scheduled",
+	'service_announcements:menu:filter:calendar' => "Calendar",
 	'service_announcements:menu:filter:staff' => "Staff",
 	
 	'service_announcements:menu:user_hover:staff:assign' => "Make service announcements staff",
@@ -38,6 +39,7 @@ return [
 	// pages
 	'service_announcements:service_announcements:all' => "All service announcements",
 	'service_announcements:service_announcements:scheduled' => "Scheduled service announcements",
+	'service_announcements:service_announcements:calendar' => "All service announcements",
 	'service_announcements:service_announcements:add' => "Add a service announcement",
 	'service_announcements:service_announcements:edit' => "Edit service announcement: %s",
 	'service_announcements:service_announcements:status_update' => "Status update for: %s",
@@ -74,6 +76,12 @@ return [
 	'service_announcements:priority:medium' => "Medium",
 	'service_announcements:priority:high' => "High",
 	'service_announcements:priority:critical' => "Critical",
+	
+	// calendar
+	'service_announcements:calendar:today' => 'Today',
+	'service_announcements:calendar:month' => 'Month',
+	'service_announcements:calendar:week' => 'Week',
+	'service_announcements:calendar:day' => 'Day',
 	
 	// river
 	'river:create:object:service_announcement' => "%s made a service announcement: %s",

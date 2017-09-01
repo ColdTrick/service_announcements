@@ -41,6 +41,13 @@ class Filter {
 			'priority' => 500,
 		]);
 		
+		$return_value[] = \ElggMenuItem::factory([
+			'name' => 'calendar',
+			'text' => elgg_echo('service_announcements:menu:filter:calendar'),
+			'href' => 'service_announcements/calendar',
+			'priority' => 600,
+		]);
+		
 		return $return_value;
 	}
 	

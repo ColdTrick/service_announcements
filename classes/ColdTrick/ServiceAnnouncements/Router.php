@@ -71,6 +71,12 @@ class Router {
 				return true;
 				
 				break;
+			case 'calendar':
+				
+				echo elgg_view_resource('service_announcements/calendar');
+				return true;
+				
+				break;
 			case 'add':
 				
 				echo elgg_view_resource('service_announcements/add');

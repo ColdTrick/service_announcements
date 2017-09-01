@@ -20,8 +20,11 @@ function service_announcements_init() {
 	// css/js
 	elgg_extend_view('elgg.css', 'css/service_announcements/site.css');
 	
+	elgg_register_css('fullcalendar', elgg_get_simplecache_url('css/service_announcements/fullcalendar'));
+	
 	// ajax
 	elgg_register_ajax_view('service_announcements/service_announcement/status_update');
+	elgg_register_ajax_view('service_announcements/calendar');
 	
 	// register page handlers
 	elgg_register_page_handler('services', '\ColdTrick\ServiceAnnouncements\Router::services');

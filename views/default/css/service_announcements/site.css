@@ -6,3 +6,9 @@
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 10px;
 }
+
+/* Site announcement calendar items */
+.fc-event.service-announcement-type-incident {
+	background-color: orange;	
+	border-color: orange;	
+}
