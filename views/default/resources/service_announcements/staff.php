@@ -2,9 +2,6 @@
 
 elgg_admin_gatekeeper();
 
-// breadcrumb
-elgg_push_breadcrumb(elgg_echo('service_announcements:breadcrumb:service_announcements:all'), 'service_announcements/all');
-
 // build page elements
 $title = elgg_echo('service_announcements:service_announcements:staff');
 

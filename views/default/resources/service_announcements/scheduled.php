@@ -1,8 +1,5 @@
 <?php
 
-// breadcrumb
-elgg_push_breadcrumb(elgg_echo('service_announcements:breadcrumb:service_announcements:all'), 'service_announcements/all');
-
 // title button
 elgg_register_title_button(null, 'add', 'object', ServiceAnnouncement::SUBTYPE);
 
