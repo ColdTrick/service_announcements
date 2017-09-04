@@ -112,7 +112,7 @@ class ServiceAnnouncement extends ElggObject {
 	 * ];
 	 */
 	public function getSubscriptions() {
-		$result = [];
+		$result = elgg_get_subscriptions_for_container($this->guid);
 		
 		$ia = elgg_set_ignore_access(true);
 		
