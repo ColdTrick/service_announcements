@@ -49,6 +49,15 @@ function service_announcements_init() {
 	
 	elgg_register_plugin_hook_handler('entity_types', 'content_subscriptions', '\ColdTrick\ServiceAnnouncements\ContentSubscriptions::registerServiceAnnouncements');
 	
+	elgg_register_plugin_hook_handler('extender:url', 'annotation', '\ColdTrick\ServiceAnnouncements\Annotations::statusUpdateURL');
+	
+	// notifications
+	elgg_register_notification_event('annotation', 'status_update_update');
+	
+	elgg_register_plugin_hook_handler('prepare', 'notification:create:annotation:status_update_update', '\ColdTrick\ServiceAnnouncements\Notifications::prepareStatusUpdateMessage');
+	
+	elgg_register_plugin_hook_handler('get', 'subscriptions', '\ColdTrick\ServiceAnnouncements\Notifications::getStatusUpdateSubscriptions');
+	
 	// extend views
 	elgg_extend_view('service_announcements/services/sidebar', 'service_announcements/services/sidebar/subscriptions');
 	

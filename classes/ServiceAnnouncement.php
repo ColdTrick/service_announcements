@@ -103,4 +103,35 @@ class ServiceAnnouncement extends ElggObject {
 		
 		return $this->getEntitiesFromRelationship($options);
 	}
+	
+	/**
+	 * Get the subscription records for this service announcement
+	 *
+	 * @return array in the form [
+	 *     user_guid => ['email', 'sms', 'ajax'],
+	 * ];
+	 */
+	public function getSubscriptions() {
+		$result = [];
+		
+		$ia = elgg_set_ignore_access(true);
+		
+		$batch = $this->getServices([
+			'limit' => false,
+			'batch' => true,
+		]);
+		/* @var $service \Service */
+		foreach ($batch as $service) {
+			$subs = $service->getSubscriptions($this->announcement_type);
+			if (empty($subs)) {
+				continue;
+			}
+			
+			$result += $subs;
+		}
+		
+		elgg_set_ignore_access($ia);
+		
+		return $result;
+	}
 }

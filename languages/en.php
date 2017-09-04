@@ -87,6 +87,20 @@ return [
 	'river:create:object:service_announcement' => "%s made a service announcement: %s",
 	'river:status_update:object:service_announcement' => "%s posted an update on: %s",
 	
+	// notifications
+	// status update: update
+	'service_announcements:notification:status_update:update:subject' => "A new status update has been posted for: %s",
+	'service_announcements:notification:status_update:update:summary' => "A new status update has been posted for: %s",
+	'service_announcements:notification:status_update:update:body' => "Hi %s,
+
+A new status update has been posted for: %s
+
+%s
+
+To view the status update, click here:
+%s
+",
+	
 	// actions
 	// status update delete
 	'service_announcements:action:service_announcement:status_update:delete:error' => "An error occured while deleting the status update",

@@ -161,4 +161,43 @@ class Service extends ElggObject {
 		
 		return (bool) remove_entity_relationship($user_guid, "notify_{$announcement_type}_{$method}", $this->guid);
 	}
+	
+	/**
+	 * Get all subscription records for a given announcement type
+	 *
+	 * @param string $announcement_type the type of the announcement
+	 *
+	 * @return array in the form [
+	 *     user_guid => ['email', 'sms', 'ajax'],
+	 * ];
+	 */
+	public function getSubscriptions($announcement_type) {
+		
+		$dbprefix = elgg_get_config('dbprefix');
+		$query = "SELECT r.*
+			FROM {$dbprefix}entity_relationships r
+			WHERE r.guid_two = {$this->guid}
+			AND r.relationship LIKE 'notify_{$announcement_type}_%'
+		";
+		
+		$relationships = get_data($query, 'row_to_elggrelationship');
+		if (empty($relationships)) {
+			return [];
+		}
+		
+		$result = [];
+		/* @var $relationship ElggRelationship */
+		foreach ($relationships as $relationship) {
+			$user_guid = $relationship->guid_one;
+			list($dummy, $type, $method) = explode('_', $relationship->relationship);
+			
+			if (!isset($result[$user_guid])) {
+				$result[$user_guid] = [];
+			}
+			
+			$result[$user_guid][] = $method;
+		}
+		
+		return $result;
+	}
 }
