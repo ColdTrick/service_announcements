@@ -47,4 +47,40 @@ class Page {
 		
 		return $returnvalue;
 	}
+	
+	/**
+	 * Add a menu item to the page menu
+	 *
+	 * @param string          $hook        the name of the hook
+	 * @param string          $type        the type of the hook
+	 * @param \ElggMenuItem[] $returnvalue current return value
+	 * @param array           $params      supplied params
+	 *
+	 * @return \ElggMenuItem[]
+	 */
+	public static function registerServiceNotifications($hook, $type, $returnvalue, $params) {
+		
+		if (!elgg_is_logged_in()) {
+			return;
+		}
+		
+		if (!elgg_in_context('settings')) {
+			return;
+		}
+		
+		$page_owner = elgg_get_page_owner_entity();
+		if (!($page_owner instanceof \ElggUser) || !$page_owner->canEdit()) {
+			return;
+		}
+		
+		$returnvalue[] = \ElggMenuItem::factory([
+			'name' => 'services_notifications',
+			'text' => elgg_echo('service_announcements:menu:page:services:notifications'),
+			'href' => "services/notifications/{$page_owner->username}",
+			'contexts' => ['settings'],
+			'section' => 'notifications',
+		]);
+		
+		return $returnvalue;
+	}
 }

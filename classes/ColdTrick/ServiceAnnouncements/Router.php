@@ -44,6 +44,14 @@ class Router {
 				return true;
 				
 				break;
+			case 'notifications':
+				
+				$vars['username'] = elgg_extract(1, $page);
+				
+				echo elgg_view_resource('services/notifications', $vars);
+				return true;
+				
+				break;
 			default:
 				
 				forward('services/all');

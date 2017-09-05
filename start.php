@@ -42,6 +42,7 @@ function service_announcements_init() {
 	elgg_register_plugin_hook_handler('register', 'menu:site', '\ColdTrick\ServiceAnnouncements\Menu\Site::registerServiceAnnouncements');
 	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\ServiceAnnouncements\Menu\Page::registerServices');
 	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\ServiceAnnouncements\Menu\Page::registerServiceAnnouncements');
+	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\ServiceAnnouncements\Menu\Page::registerServiceNotifications');
 	elgg_register_plugin_hook_handler('register', 'menu:annotation', '\ColdTrick\ServiceAnnouncements\Menu\Annotation::registerDelete');
 	elgg_register_plugin_hook_handler('register', 'menu:filter', '\ColdTrick\ServiceAnnouncements\Menu\Filter::serviceAnnouncements');
 	elgg_register_plugin_hook_handler('register', 'menu:filter', '\ColdTrick\ServiceAnnouncements\Menu\Filter::serviceAnnouncementsStaff');
@@ -74,6 +75,7 @@ function service_announcements_init() {
 	elgg_register_action('services/edit', dirname(__FILE__) . '/actions/services/edit.php');
 	elgg_register_action('services/delete', dirname(__FILE__) . '/actions/services/delete.php');
 	elgg_register_action('services/subscriptions', dirname(__FILE__) . '/actions/services/subscriptions.php');
+	elgg_register_action('services/notifications', dirname(__FILE__) . '/actions/services/notifications.php');
 	
 	elgg_register_action('service_announcements/edit', dirname(__FILE__) . '/actions/service_announcements/edit.php');
 	elgg_register_action('service_announcements/delete', dirname(__FILE__) . '/actions/service_announcements/delete.php');

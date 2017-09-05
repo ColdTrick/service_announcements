@@ -19,12 +19,14 @@ return [
 	// breadcrumbs
 	'service_announcements:breadcrumb:service_announcements:all' => "Service announcements",
 	'service_announcements:breadcrumb:services:all' => "Services",
+	'service_announcements:breadcrumb:services:notifications' => "Service notifications",
 	
 	// menus
 	'service_announcements:menu:site:service_announcements' => 'Service announcements',
 	
 	'service_announcements:menu:page:service_announcements' => 'Service announcements',
 	'service_announcements:menu:page:services' => 'Services',
+	'service_announcements:menu:page:services:notifications' => 'Service notifications',
 	
 	'service_announcements:menu:title:service_announcement:status:update' => "Status update",
 	'service_announcements:menu:title:service_announcement:status:close' => "Close",
@@ -48,6 +50,7 @@ return [
 	'service_announcements:services:all' => "All services",
 	'service_announcements:services:add' => 'Add a service',
 	'service_announcements:services:edit' => 'Edit service: %s',
+	'service_announcements:services:notifications' => 'Service notification settings',
 	
 	// service announcements
 	'service_announcements:service_announcements:edit:services' => "Affected services",
@@ -65,6 +68,9 @@ return [
 	'service_announcements:service:announcements:upcomming' => "Upcomming announcements",
 	
 	'service_announcements:services:sidebar:subscriptions' => "Keep me up-to-date",
+	
+	'service_announcements:services:notifications:description' => "Below is a list of the currently subscribed services. Here you can easily change the subscriptions.",
+	'service_announcements:services:notifications:notfound' => "No service subscriptions could be found.",
 	
 	// announcement types
 	'service_announcements:announcement_type' => "Announcement type",

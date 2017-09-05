@@ -109,6 +109,64 @@ class Service extends ElggObject {
 	}
 	
 	/**
+	 * Set the subscription settings for a user
+	 *
+	 * @param array $subscriptions the subscription settings scructured as [announcement_type => [notification methods]]
+	 * @param int   $user_guid     the user to check (default: current user)
+	 *
+	 * @return bool
+	 */
+	public function setUserSubscriptions($subscriptions, $user_guid = 0) {
+		
+		$user_guid = (int) $user_guid;
+		if ($user_guid < 1) {
+			$user_guid = elgg_get_logged_in_user_guid();
+		}
+		
+		if ($user_guid < 1) {
+			return false;
+		}
+		
+		foreach ($subscriptions as $type => $methods) {
+			if (!is_array($methods)) {
+				$subscriptions[$type] = [];
+			}
+		}
+		
+		$current_subscriptions = $this->getUserSubscriptions($user_guid);
+		
+		$removed = [];
+		$added = [];
+		foreach ($current_subscriptions as $type => $methods) {
+			$removed[$type] = array_diff($methods, $subscriptions[$type]);
+			$added[$type] = array_diff($subscriptions[$type], $methods);
+		}
+		
+		$result = true;
+		foreach ($removed as $type => $methods) {
+			if (empty($methods)) {
+				continue;
+			}
+			
+			foreach ($methods as $method) {
+				$result &= $this->removeUserSubscription($type, $method, $user_guid);
+			}
+		}
+		
+		foreach ($added as $type => $methods) {
+			if (empty($methods)) {
+				continue;
+			}
+			
+			foreach ($methods as $method) {
+				$result &= $this->addUserSubscription($type, $method, $user_guid);
+			}
+		}
+		
+		return (bool) $result;
+	}
+	
+	/**
 	 * Add a subscription for a user
 	 *
 	 * @param string $announcement_type the type of the announcement
