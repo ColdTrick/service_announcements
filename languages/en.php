@@ -56,6 +56,7 @@ return [
 	'service_announcements:service_announcements:enddate' => "End date",
 	
 	'service_announcements:status_update:text' => "Status text",
+	'service_announcements:status_update:close:default' => "The service announcement was closed",
 	'service_announcements:service_announcements:status_update' => "Status updates",
 	
 	// services

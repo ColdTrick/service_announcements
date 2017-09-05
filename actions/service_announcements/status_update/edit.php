@@ -27,11 +27,7 @@ switch ($type) {
 			return elgg_error_response(elgg_echo('error:missing_data'));
 		}
 		
-		if (!empty($text)) {
-			$result = $entity->annotate("status_update_{$type}", $text, $entity->access_id);
-		} else {
-			$result = true;
-		}
+		$result = $entity->annotate("status_update_{$type}", $text, $entity->access_id);
 		break;
 }
 
@@ -39,7 +35,7 @@ if (empty($result)) {
 	return elgg_error_response(elgg_echo('save:fail'));
 }
 
-if (is_numeric($result)) {
+if (is_numeric($result) && !empty($text)) {
 	// only create river item if there is text
 	elgg_create_river_item([
 		'view' => 'river/object/service_announcement/status_update',
