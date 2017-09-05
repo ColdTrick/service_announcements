@@ -54,11 +54,16 @@ function service_announcements_init() {
 	// notifications
 	elgg_register_notification_event('annotation', 'status_update_update');
 	elgg_register_notification_event('annotation', 'status_update_close');
+	elgg_register_notification_event('object', ServiceAnnouncement::SUBTYPE);
+	
+	elgg_register_plugin_hook_handler('send:before', 'notifications', '\ColdTrick\ServiceAnnouncements\Notifications::preventMaintenanceServiceAnnouncements');
 	
 	elgg_register_plugin_hook_handler('prepare', 'notification:create:annotation:status_update_update', '\ColdTrick\ServiceAnnouncements\Notifications::prepareStatusUpdateMessage');
 	elgg_register_plugin_hook_handler('prepare', 'notification:create:annotation:status_update_close', '\ColdTrick\ServiceAnnouncements\Notifications::prepareStatusUpdateMessage');
+	elgg_register_plugin_hook_handler('prepare', 'notification:create:object:' . ServiceAnnouncement::SUBTYPE, '\ColdTrick\ServiceAnnouncements\Notifications::prepareServiceAnnouncementMessage');
 	
 	elgg_register_plugin_hook_handler('get', 'subscriptions', '\ColdTrick\ServiceAnnouncements\Notifications::getStatusUpdateSubscriptions');
+	elgg_register_plugin_hook_handler('get', 'subscriptions', '\ColdTrick\ServiceAnnouncements\Notifications::getServiceAnnouncementSubscriptions');
 	
 	// extend views
 	elgg_extend_view('service_announcements/services/sidebar', 'service_announcements/services/sidebar/subscriptions');

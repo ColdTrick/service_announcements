@@ -120,6 +120,21 @@ The service announcement '%s' was closed.
 To view the status update, click here:
 %s
 ",
+	// service announcement: incident
+	'service_announcements:notification:service_announcement:incident:subject' => "A new incident was created: %s",
+	'service_announcements:notification:service_announcement:incident:summary' => "A new incident was created: %s",
+	'service_announcements:notification:service_announcement:incident:body' => "Hi %s,
+
+A new incident was created: %s
+
+%s
+
+This incident affects the following services:
+%s
+
+To view the incident, click here:
+%s
+",
 	
 	// actions
 	// status update delete
