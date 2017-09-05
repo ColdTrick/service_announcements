@@ -101,6 +101,25 @@ A new status update has been posted for: %s
 To view the status update, click here:
 %s
 ",
+	// status update: close
+	'service_announcements:notification:status_update:close:subject' => "The service announcement '%s' was closed",
+	'service_announcements:notification:status_update:close:summary' => "The service announcement '%s' was closed",
+	'service_announcements:notification:status_update:close:body' => "Hi %s,
+
+The service announcement '%s' was closed:
+
+%s
+
+To view the status update, click here:
+%s
+",
+	'service_announcements:notification:status_update:close:body:no_value' => "Hi %s,
+
+The service announcement '%s' was closed.
+
+To view the status update, click here:
+%s
+",
 	
 	// actions
 	// status update delete

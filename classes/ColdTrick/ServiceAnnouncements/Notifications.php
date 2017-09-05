@@ -54,6 +54,27 @@ class Notifications {
 				], $language);
 				break;
 			case 'status_update_close':
+				$return_value->subject = elgg_echo('service_announcements:notification:status_update:close:subject', [
+					$announcement->getDisplayName(),
+				], $language);
+				$return_value->summary = elgg_echo('service_announcements:notification:status_update:close:summary', [
+					$announcement->getDisplayName(),
+				], $language);
+				
+				if (!empty($annotation->value)) {
+					$return_value->body = elgg_echo('service_announcements:notification:status_update:close:body', [
+						$recipient->getDisplayName(),
+						$announcement->getDisplayName(),
+						$annotation->value,
+						$annotation->getURL(),
+					], $language);
+				} else {
+					$return_value->body = elgg_echo('service_announcements:notification:status_update:close:body:no_value', [
+						$recipient->getDisplayName(),
+						$announcement->getDisplayName(),
+						$annotation->getURL(),
+					], $language);
+				}
 				
 				break;
 			default:

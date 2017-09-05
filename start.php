@@ -53,8 +53,10 @@ function service_announcements_init() {
 	
 	// notifications
 	elgg_register_notification_event('annotation', 'status_update_update');
+	elgg_register_notification_event('annotation', 'status_update_close');
 	
 	elgg_register_plugin_hook_handler('prepare', 'notification:create:annotation:status_update_update', '\ColdTrick\ServiceAnnouncements\Notifications::prepareStatusUpdateMessage');
+	elgg_register_plugin_hook_handler('prepare', 'notification:create:annotation:status_update_close', '\ColdTrick\ServiceAnnouncements\Notifications::prepareStatusUpdateMessage');
 	
 	elgg_register_plugin_hook_handler('get', 'subscriptions', '\ColdTrick\ServiceAnnouncements\Notifications::getStatusUpdateSubscriptions');
 	
