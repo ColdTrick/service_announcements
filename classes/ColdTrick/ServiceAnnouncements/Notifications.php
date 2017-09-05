@@ -257,4 +257,189 @@ class Notifications {
 		
 		return $return_value;
 	}
+	
+	/**
+	 * Cron job to send out notifications about upcomming maintenace
+	 *
+	 * @param string $hook         the name of the hook
+	 * @param string $type         the type of the hook
+	 * @param mixed  $return_value current return value
+	 * @param array  $params       supplied params
+	 *
+	 * @return void
+	 */
+	public static function scheduledMaintenanceNotifications($hook, $type, $return_value, $params) {
+		
+		echo 'Starting Service Announcements scheduled maintenance' . PHP_EOL;
+		elgg_log('Starting Service Announcements scheduled maintenance', 'NOTICE');
+		
+		$time = (int) elgg_extract('time', $params, time());
+		$ia = elgg_set_ignore_access(true);
+		
+		/* @var $announcement_batch \ElggBatch */
+		$announcement_batch = elgg_get_entities_from_metadata([
+			'type' => 'object',
+			'subtype' => \ServiceAnnouncement::SUBTYPE,
+			'limit' => false,
+			'batch' => true,
+			'metadata_name_value_pairs' => [
+				[
+					'name' => 'startdate',
+					'value' => $time,
+					'operand' => '>=',
+				],
+				[
+					'name' => 'startdate',
+					'value' => strtotime('+1 week', $time),
+					'operand' => '<',
+				],
+			],
+			'order_by_metadata' => [
+				'name' => 'startdate',
+				'direction' => 'ASC',
+				'as' => 'integer',
+			],
+		]);
+		
+		$email_summary = [];
+		$email_recipients = [];
+		/* @var $announcement \ServiceAnnouncement */
+		foreach ($announcement_batch as $announcement) {
+			$subscriptions = $announcement->getSubscriptions();
+			if (empty($subscriptions)) {
+				continue;
+			}
+			
+			$notify_params = [
+				'object' => $announcement,
+				'action' => 'scheduled',
+			];
+			
+			foreach ($subscriptions as $user_guid => $methods) {
+				if (empty($methods)) {
+					// shouldn't happen
+					continue;
+				}
+				
+				foreach ($methods as $method) {
+					switch ($method) {
+						case 'email':
+							// store for later summary e-mail
+							if (!isset($email_summary[$announcement->guid])) {
+								$email_summary[$announcement->guid] = $announcement;
+							}
+							
+							if (!isset($email_recipients[$user_guid])) {
+								$email_recipients[$user_guid] = [];
+							}
+							
+							$email_recipients[$user_guid][] = $announcement->guid;
+							
+							break;
+						case 'site':
+							$recipient = get_user($user_guid);
+							if (empty($recipient)) {
+								continue;
+							}
+							
+							$services = $announcement->getServices([
+								'limit' => false,
+								'batch' => true,
+							]);
+							$affected_services = [];
+							/* @var $service \Service */
+							foreach ($services as $service) {
+								$affected_services[] = elgg_view('output/url', [
+									'text' => $service->getDisplayName(),
+									'href' => $service->getURL(),
+								]);
+							}
+							
+							// direct send site notification
+							$subject = elgg_echo('service_announcements:notification:service_announcement:maintenace:scheduled:site:subject', [$announcement->getDisplayName()]);
+							$notify_params['summary'] = elgg_echo('service_announcements:notification:service_announcement:maintenace:scheduled:site:summary', [$announcement->getDisplayName()]);
+							$body = elgg_echo('service_announcements:notification:service_announcement:maintenace:scheduled:site:body', [
+								$recipient->getDisplayName(),
+								$announcement->getDisplayName(),
+								$announcement->description,
+								implode(PHP_EOL, $affected_services),
+								$announcement->getURL(),
+							]);
+							
+							notify_user($user_guid, $announcement->owner_guid, $subject, $body, $notify_params, ['site']);
+							
+							// small cleanup
+							unset($services);
+							unset($affected_services);
+							break;
+					}
+				}
+			}
+		}
+		
+		if (empty($email_recipients)) {
+			// nobody to notify
+			echo 'Done with Service Announcements scheduled maintenance' . PHP_EOL;
+			elgg_log('Done with Service Announcements scheduled maintenance', 'NOTICE');
+			
+			elgg_set_ignore_access($ia);
+			
+			return;
+		}
+		
+		$site = elgg_get_site_entity();
+		
+		// make email summaries for each user
+		foreach ($email_recipients as $user_guid => $announcement_guids) {
+			$recipient = get_user($user_guid);
+			if (empty($recipient)) {
+				continue;
+			}
+			$summary = [];
+			
+			foreach ($announcement_guids as $guid) {
+				/* @var $announcement \ServiceAnnouncement */
+				$announcement = $email_summary[$guid];
+				
+				// make a service announcement info block
+				$a_summary = $announcement->getDisplayName() . PHP_EOL;
+				$a_summary .= elgg_echo('service_announcements:service_announcements:startdate') . ': ' . date('d/m/Y', $announcement->startdate) . PHP_EOL;
+				if (!empty($announcement->enddate)) {
+					$a_summary .= elgg_echo('service_announcements:service_announcements:enddate') . ': ' . date('d/m/Y', $announcement->enddate) . PHP_EOL;
+				}
+				
+				$services = $announcement->getServices([
+					'limit' => false,
+					'batch' => true,
+				]);
+				$affected_services = [];
+				/* @var $service \Service */
+				foreach ($services as $service) {
+					$affected_services[] = elgg_view('output/url', [
+						'text' => $service->getDisplayName(),
+						'href' => $service->getURL(),
+					]);
+				}
+				$a_summary .= elgg_echo('service_announcements:service_announcements:edit:services') . ': ';
+				$a_summary .= implode(', ', $affected_services) . PHP_EOL;
+				$a_summary .= $announcement->getURL();
+				
+				// add summary to list
+				$summary[] = $a_summary;
+			}
+			
+			$subject = elgg_echo('service_announcements:notification:service_announcement:maintenace:scheduled:email:subject');
+			$body = elgg_echo('service_announcements:notification:service_announcement:maintenace:scheduled:email:body', [
+				$recipient->getDisplayName(),
+				implode(PHP_EOL . PHP_EOL, $summary),
+			]);
+			
+			notify_user($user_guid, $site->guid, $subject, $body, [], ['email']);
+		}
+		
+		echo 'Done with Service Announcements scheduled maintenance' . PHP_EOL;
+		elgg_log('Done with Service Announcements scheduled maintenance', 'NOTICE');
+		
+		elgg_set_ignore_access($ia);
+	}
 }

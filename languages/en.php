@@ -136,6 +136,30 @@ To view the incident, click here:
 %s
 ",
 	
+	// service announcement: maintenace (scheduled)
+	'service_announcements:notification:service_announcement:maintenace:scheduled:site:subject' => "New scheduled maintenance: %s",
+	'service_announcements:notification:service_announcement:maintenace:scheduled:site:summary' => "New scheduled maintenance: %s",
+	'service_announcements:notification:service_announcement:maintenace:scheduled:site:body' => "Hi %s,
+
+New maintenance has been scheduled: %s
+
+%s
+
+This maintenance affects the following services:
+%s
+
+To view the maintenance, click here:
+%s
+",
+	
+	'service_announcements:notification:service_announcement:maintenace:scheduled:email:subject' => "Scheduled maintenance for next week",
+	'service_announcements:notification:service_announcement:maintenace:scheduled:email:body' => "Hi %s,
+
+The following maintenance has been scheduled for next week:
+
+%s
+",
+	
 	// actions
 	// status update delete
 	'service_announcements:action:service_announcement:status_update:delete:error' => "An error occured while deleting the status update",

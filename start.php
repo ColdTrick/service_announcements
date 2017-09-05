@@ -65,6 +65,8 @@ function service_announcements_init() {
 	elgg_register_plugin_hook_handler('get', 'subscriptions', '\ColdTrick\ServiceAnnouncements\Notifications::getStatusUpdateSubscriptions');
 	elgg_register_plugin_hook_handler('get', 'subscriptions', '\ColdTrick\ServiceAnnouncements\Notifications::getServiceAnnouncementSubscriptions');
 	
+	elgg_register_plugin_hook_handler('cron', 'weekly', '\ColdTrick\ServiceAnnouncements\Notifications::scheduledMaintenanceNotifications');
+	
 	// extend views
 	elgg_extend_view('service_announcements/services/sidebar', 'service_announcements/services/sidebar/subscriptions');
 	
