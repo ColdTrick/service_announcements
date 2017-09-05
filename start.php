@@ -30,6 +30,10 @@ function service_announcements_init() {
 	elgg_register_page_handler('services', '\ColdTrick\ServiceAnnouncements\Router::services');
 	elgg_register_page_handler('service_announcements', '\ColdTrick\ServiceAnnouncements\Router::serviceAnnouncements');
 	
+	// search
+	elgg_register_entity_type('object', Service::SUBTYPE);
+	elgg_register_entity_type('object', ServiceAnnouncement::SUBTYPE);
+	
 	// events
 	elgg_register_event_handler('update:after', 'object', '\ColdTrick\ServiceAnnouncements\Access::updateAnnotationAccess');
 	
