@@ -29,7 +29,6 @@ return [
 	'service_announcements:menu:page:services:notifications' => 'Service notifications',
 	
 	'service_announcements:menu:title:service_announcement:status:update' => "Status update",
-	'service_announcements:menu:title:service_announcement:status:close' => "Close",
 	
 	'service_announcements:menu:filter:all' => "Current",
 	'service_announcements:menu:filter:past' => "Past",
