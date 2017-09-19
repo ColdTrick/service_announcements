@@ -41,7 +41,7 @@ $entity->access_id = (int) get_input('access_id');
 $entity->tags = get_input('tags') ? string_to_tag_array(get_input('tags')) : null;
 
 $entity->startdate = $startdate;
-$entity->enddate = !empty($enddate) ? $enddate : null;
+$entity->enddate = !empty($enddate) ? $enddate : 0;
 
 $entity->setServices($services);
 
