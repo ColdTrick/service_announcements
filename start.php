@@ -22,6 +22,11 @@ function service_announcements_init() {
 	
 	elgg_register_css('fullcalendar', elgg_get_simplecache_url('css/service_announcements/fullcalendar'));
 	
+	elgg_register_js('jquery.timepicker', elgg_get_simplecache_url('jquery-ui-timepicker/jquery-ui-timepicker-addon.js'));
+	elgg_register_js('jquery.slider', elgg_get_simplecache_url('jquery-ui-timepicker/jquery-ui-slider.js'));
+	elgg_register_css('jquery.timepicker', elgg_get_simplecache_url('jquery-ui-timepicker/jquery-ui-timepicker-addon.css'));
+	elgg_register_css('jquery.slider', elgg_get_simplecache_url('jquery-ui-timepicker/jquery-ui-slider.css'));
+	
 	// ajax
 	elgg_register_ajax_view('service_announcements/service_announcement/status_update');
 	elgg_register_ajax_view('service_announcements/calendar');
