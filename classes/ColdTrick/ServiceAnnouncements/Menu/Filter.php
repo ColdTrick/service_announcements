@@ -33,6 +33,16 @@ class Filter {
 			unset($return_value[$index]);
 		}
 		
+		// change 'all' text
+		foreach ($return_value as $menu_item) {
+			if ($menu_item->getName() !== 'all') {
+				continue;
+			}
+			
+			$menu_item->setText(elgg_echo('service_announcements:menu:filter:all'));
+			break;
+		}
+		
 		// add new item
 		$return_value[] = \ElggMenuItem::factory([
 			'name' => 'past',
