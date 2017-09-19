@@ -206,7 +206,7 @@ function service_announcements_register_announcement_title_menu_item(ServiceAnno
 	if (empty($entity->enddate)) {
 		elgg_register_menu_item('title', [
 			'name' => 'status_update:close',
-			'text' => elgg_echo('service_announcements:menu:title:service_announcement:status:close'),
+			'text' => elgg_echo('close'),
 			'href' => elgg_http_add_url_query_elements('ajax/view/service_announcements/service_announcement/status_update', [
 				'type' => 'close',
 				'guid' => $entity->guid,
