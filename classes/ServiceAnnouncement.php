@@ -197,4 +197,17 @@ class ServiceAnnouncement extends ElggObject {
 		return false;
 	}
 	
+	/**
+	 * Returns if the announcement is finished before the current time
+	 *
+	 * @return bool is the announcement is finished before now
+	 */
+	public function isFinished() {
+		$end = $this->getEndTimestamp();
+		if (empty($end)) {
+			return false;
+		}
+		
+		return $end < time();
+	}
 }

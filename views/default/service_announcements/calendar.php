@@ -50,13 +50,20 @@ $entities = elgg_get_entities_from_metadata($options);
 $result = [];
 
 foreach ($entities as $entity) {
+	$classes = [
+		'service-announcements-announcement-type',
+		"service-announcements-announcement-type-{$entity->announcement_type}",
+	];
+	if ($entity->isFinished()) {
+		$classes[] = 'service-announcements-announcement-finished';
+	}
 	$result[] = [
 		'title' => $entity->getDisplayName(),
 		'start' => $entity->getStartDate(),
 		'end' => $entity->getEndTimestamp() ? $entity->getEndDate() : gmdate('c', time()),
 		'allDay' => $entity->isMultiDay(),
 		'url' => $entity->getURL(),
-		'className' => "service-announcements-announcement-type service-announcements-announcement-type-{$entity->announcement_type}",
+		'className' => implode(' ', $classes),
 	];
 }
 

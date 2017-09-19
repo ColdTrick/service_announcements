@@ -20,6 +20,10 @@
 	color: white;
 }
 
+.service-announcements-announcement-finished {
+	opacity: 0.7;
+}
+
 .service-announcements-announcement-full-icon {
 	float: right;
 	margin: 5px;
