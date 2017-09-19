@@ -34,6 +34,7 @@ $summary = elgg_view('object/elements/summary', $params);
 // prepare body
 $body = '';
 
+$general_info = '';
 if (!empty($entity->announcement_type)) {
 	$type = $entity->announcement_type;
 	if (elgg_language_key_exists("service_announcements:announcement_type:{$type}")) {
@@ -46,27 +47,31 @@ if (!empty($entity->announcement_type)) {
 			"service-announcements-announcement-type-{$entity->announcement_type}",
 		],
 	], $type);
-	$body .= elgg_format_element('div', [], $type);
+	$general_info .= elgg_format_element('div', [], $type);
 }
 
 if (!empty($entity->startdate)) {
 	$start = elgg_echo('service_announcements:service_announcements:startdate');
 	$start .= ': ' . date('d/m/Y', $entity->startdate);
 	
-	$body .= elgg_format_element('div', [], $start);
+	$general_info .= elgg_format_element('div', [], $start);
 }
 
 if (!empty($entity->enddate)) {
 	$end = elgg_echo('service_announcements:service_announcements:enddate');
 	$end .= ': ' . date('d/m/Y', $entity->enddate);
 	
-	$body .= elgg_format_element('div', [], $end);
+	$general_info .= elgg_format_element('div', [], $end);
 }
 
 if (!empty($entity->description)) {
-	$body .= elgg_view_module('info', '', elgg_view('output/longtext', [
+	$general_info .= elgg_view('output/longtext', [
 		'value' => $entity->description,
-	]));
+	]);
+}
+
+if (!empty($general_info)) {
+	$body .= elgg_view_module('info', '', $general_info);
 }
 
 // affected services
