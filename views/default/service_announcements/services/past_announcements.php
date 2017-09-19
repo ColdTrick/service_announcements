@@ -23,6 +23,11 @@ $options = [
 			'value' => time(),
 			'operand' => '<',
 		],
+		[
+			'name' => 'enddate',
+			'value' => 0,
+			'operand' => '>',
+		],
 	],
 	'order_by_metadata' => [
 		'name' => 'enddate',

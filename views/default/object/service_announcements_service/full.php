@@ -38,19 +38,7 @@ $body = elgg_view('output/longtext', [
 // current announcements (incidents/maintenance)
 $current = elgg_view('service_announcements/services/current_announcements', $vars);
 if (!empty($current)) {
-	$body .= elgg_view_module('aside', elgg_echo('service_announcements:service:announcements:current'), $current);
-}
-
-// past incidents
-$past = elgg_view('service_announcements/services/past_announcements', [
-	'entity' => $entity,
-	'options' => [
-		'offset_key' => 'past',
-		'offset' => (int) get_input('past'),
-	],
-]);
-if (empty($past)) {
-	$past = elgg_echo('notfound');
+	$body .= elgg_view_module('info', elgg_echo('service_announcements:service:announcements:current'), $current);
 }
 
 // upcomming maintenace
@@ -61,14 +49,21 @@ $upcomming = elgg_view('service_announcements/services/upcomming_announcements',
 		'offset' => (int) get_input('upcomming'),
 	],
 ]);
-if (empty($upcomming)) {
-	$upcomming = elgg_echo('notfound');
+if (!empty($upcomming)) {
+	$body .= elgg_view_module('info', elgg_echo('service_announcements:service:announcements:upcomming'), $upcomming);
 }
 
-$combine = elgg_view_module('aside', elgg_echo('service_announcements:service:announcements:past'), $past);
-$combine .= elgg_view_module('aside', elgg_echo('service_announcements:service:announcements:upcomming'), $upcomming);
-
-$body .= elgg_format_element('div', ['class' => 'service-announcements-service-full-announcements'], $combine);
+// past incidents
+$past = elgg_view('service_announcements/services/past_announcements', [
+	'entity' => $entity,
+	'options' => [
+		'offset_key' => 'past',
+		'offset' => (int) get_input('past'),
+	],
+]);
+if (!empty($past)) {
+	$body .= elgg_view_module('info', elgg_echo('service_announcements:service:announcements:past'), $past);
+}
 
 // show full view
 echo elgg_view('object/elements/full', [
