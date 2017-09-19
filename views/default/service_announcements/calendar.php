@@ -52,9 +52,9 @@ $result = [];
 foreach ($entities as $entity) {
 	$result[] = [
 		'title' => $entity->getDisplayName(),
-		'start' => gmdate('c', $entity->startdate),
-		'end' => gmdate('c', $entity->enddate),
-		//'allDay' => $event->isMultiDayEvent(),
+		'start' => $entity->getStartDate(),
+		'end' => $entity->getEndTimestamp() ? $entity->getEndDate() : gmdate('c', time()),
+		'allDay' => $entity->isMultiDay(),
 		'url' => $entity->getURL(),
 		'className' => "service-announcements-announcement-type service-announcements-announcement-type-{$entity->announcement_type}",
 	];
