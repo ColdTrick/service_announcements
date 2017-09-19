@@ -46,7 +46,12 @@ foreach ($services as $service) {
 	$subscription = $service->getUserSubscriptions($entity->guid);
 	
 	// title of service
-	$row[] = elgg_format_element('td', [], $service->getDisplayName());
+	$link = elgg_view('output/url', [
+		'text' => $service->getDisplayName(),
+		'href' => $service->getURL(),
+		'is_trusted' => true,
+	]);
+	$row[] = elgg_format_element('td', [], $link);
 	
 	// settings
 	foreach ($announcement_types as $type) {
