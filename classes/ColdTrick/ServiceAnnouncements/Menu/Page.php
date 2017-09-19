@@ -83,4 +83,31 @@ class Page {
 		
 		return $returnvalue;
 	}
+	
+	/**
+	 * Add staff item to  filter menu on the service announcements page
+	 *
+	 * @param string          $hook         the name of the hook
+	 * @param string          $type         the type of the hook
+	 * @param \ElggMenuItem[] $return_value current return value
+	 * @param array           $params       supplied params
+	 *
+	 * @return void|\ElggMenuItem[]
+	 */
+	public static function serviceAnnouncementsStaff($hook, $type, $return_value, $params) {
+		
+		if (!elgg_is_admin_logged_in()) {
+			return;
+		}
+		
+		// add staff item
+		$return_value[] = \ElggMenuItem::factory([
+			'name' => 'staff',
+			'text' => elgg_echo('service_announcements:menu:filter:staff'),
+			'href' => 'service_announcements/staff',
+			'contexts' => ['service_announcements', 'services']
+		]);
+		
+		return $return_value;
+	}
 }

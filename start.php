@@ -52,9 +52,9 @@ function service_announcements_init() {
 	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\ServiceAnnouncements\Menu\Page::registerServices');
 	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\ServiceAnnouncements\Menu\Page::registerServiceAnnouncements');
 	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\ServiceAnnouncements\Menu\Page::registerServiceNotifications');
+	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\ServiceAnnouncements\Menu\Page::serviceAnnouncementsStaff');
 	elgg_register_plugin_hook_handler('register', 'menu:annotation', '\ColdTrick\ServiceAnnouncements\Menu\Annotation::registerDelete');
 	elgg_register_plugin_hook_handler('register', 'menu:filter', '\ColdTrick\ServiceAnnouncements\Menu\Filter::serviceAnnouncements');
-	elgg_register_plugin_hook_handler('register', 'menu:filter', '\ColdTrick\ServiceAnnouncements\Menu\Filter::serviceAnnouncementsStaff');
 	elgg_register_plugin_hook_handler('register', 'menu:user_hover', '\ColdTrick\ServiceAnnouncements\Menu\UserHover::registerStaff');
 	
 	elgg_register_plugin_hook_handler('entity_types', 'content_subscriptions', '\ColdTrick\ServiceAnnouncements\ContentSubscriptions::registerServiceAnnouncements');
