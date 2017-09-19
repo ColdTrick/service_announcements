@@ -63,9 +63,11 @@ if (!empty($entity->enddate)) {
 	$body .= elgg_format_element('div', [], $end);
 }
 
-$body .= elgg_view('output/longtext', [
-	'value' => $entity->description,
-]);
+if (!empty($entity->description)) {
+	$body .= elgg_view_module('info', '', elgg_view('output/longtext', [
+		'value' => $entity->description,
+	]));
+}
 
 // affected services
 $service_count = $entity->getServices([
@@ -74,7 +76,7 @@ $service_count = $entity->getServices([
 if (!empty($service_count)) {
 	$list = elgg_view_entity_list($entity->getServices(['limit' => false]), ['full_view' => false]);
 	
-	$body .= elgg_view_module('aside', elgg_echo('service_announcements:service_announcements:edit:services'), $list);
+	$body .= elgg_view_module('info', elgg_echo('service_announcements:service_announcements:edit:services'), $list);
 }
 
 // status updates
@@ -87,7 +89,7 @@ $list = elgg_list_annotations([
 	'limit' => false,
 ]);
 if (!empty($list)) {
-	$body .= elgg_view_module('aside', elgg_echo('service_announcements:service_announcements:status_update'), $list);
+	$body .= elgg_view_module('info', elgg_echo('service_announcements:service_announcements:status_update'), $list);
 }
 
 // show full view

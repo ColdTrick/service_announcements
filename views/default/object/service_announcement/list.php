@@ -43,7 +43,7 @@ foreach ($service_batch as $service) {
 
 if (!empty($services)) {
 	$service_output = elgg_echo('service_announcements:service_announcements:edit:services');
-	$service_output .= ': ' . implode(' ', $services);
+	$service_output .= ': ' . implode(', ', $services);
 	
 	$body .= elgg_format_element('div', [], $service_output);
 }

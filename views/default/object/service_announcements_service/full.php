@@ -31,9 +31,13 @@ $params = $params + $vars;
 $summary = elgg_view('object/elements/summary', $params);
 
 // prepare body
-$body = elgg_view('output/longtext', [
-	'value' => $entity->description,
-]);
+$body = '';
+
+if (!empty($entity->description)) {
+	$body .= elgg_view_module('info', '', elgg_view('output/longtext', [
+		'value' => $entity->description,
+	]));
+}
 
 // current announcements (incidents/maintenance)
 $current = elgg_view('service_announcements/services/current_announcements', $vars);
