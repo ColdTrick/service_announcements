@@ -2,7 +2,10 @@
  Site annoucements site CSS
 */
 .service-announcements-announcement-type {
-	padding: 0 5px;
+	padding: 2px 5px;
+	margin: 5px 0;
+	display: inline-block;
+	border-radius: 3px;
 }
 .fc-event.service-announcements-announcement-type-maintenance,
 .service-announcements-announcement-type-maintenance {
@@ -15,6 +18,10 @@
 	background-color: orange;	
 	border-color: orange;
 	color: white;
+}
+
+.service-announcements-announcement-finished {
+	opacity: 0.7;
 }
 
 .service-announcements-announcement-full-icon {

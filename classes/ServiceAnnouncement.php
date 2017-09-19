@@ -134,4 +134,80 @@ class ServiceAnnouncement extends ElggObject {
 		
 		return $result;
 	}
+
+	/**
+	 * Returns the timestamp for the start of the announcement
+	 *
+	 * @return int the timestamp
+	 */
+	public function getStartTimestamp() {
+		return $this->startdate;
+	}
+	
+	/**
+	 * Returns the timestamp for the end of the announcement
+	 *
+	 * @return int the timestamp
+	 */
+	public function getEndTimestamp() {
+		return $this->enddate;
+	}
+	
+	/**
+	 * Returns the startdate and time for the announcement formatted as ISO-8601
+	 *
+	 * @param $format provide a format for the date
+	 *
+	 * @see https://en.wikipedia.org/wiki/ISO_8601
+	 *
+	 * @return string a formatted date string
+	 */
+	public function getStartDate($format = 'c') {
+		return gmdate($format, $this->getStartTimestamp());
+	}
+	
+	/**
+	 * Returns the startdate and time for the announcement formatted as ISO-8601
+	 *
+	 * @param $format provide a format for the date
+	 *
+	 * @see https://en.wikipedia.org/wiki/ISO_8601
+	 *
+	 * @return string a formatted date string
+	 */
+	public function getEndDate($format = 'c') {
+		return gmdate($format, $this->getEndTimestamp());
+	}
+	
+	/**
+	 * Returns if the announcement is spanning multiple days
+	 *
+	 * @return bool is it a multiday announcement
+	 */
+	public function isMultiDay() {
+		$start = $this->getStartTimestamp();
+		$end = $this->getEndTimestamp();
+		
+		$diff = $end - $start;
+		
+		if ($diff > (60 * 60 * 24)) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Returns if the announcement is finished before the current time
+	 *
+	 * @return bool is the announcement is finished before now
+	 */
+	public function isFinished() {
+		$end = $this->getEndTimestamp();
+		if (empty($end)) {
+			return false;
+		}
+		
+		return $end < time();
+	}
 }

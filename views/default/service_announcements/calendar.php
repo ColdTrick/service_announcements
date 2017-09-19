@@ -1,52 +1,69 @@
 <?php
 
-$events_options = [
-	'limit' => false,
-	'past_events' => true,
-];
+$start = strtotime(get_input('start')) ?: time();
+$end = strtotime(get_input('end')) ?: time();
 
-$start = get_input('start');
-$end = get_input('end');
+$dbprefix = elgg_get_config('dbprefix');
+$startdate_name_id = elgg_get_metastring_id('startdate');
+$enddate_name_id = elgg_get_metastring_id('enddate');
 
 $options = [
 	'type' => 'object',
 	'subtype' => ServiceAnnouncement::SUBTYPE,
-	'metadata_name_value_pairs' => [],
+	'limit' => false,
+	'joins' => [
+		"JOIN {$dbprefix}metadata mdstart ON e.guid = mdstart.entity_guid",
+		"JOIN {$dbprefix}metastrings msvstart ON mdstart.value_id = msvstart.id",
+		"JOIN {$dbprefix}metadata mdend ON e.guid = mdend.entity_guid",
+		"JOIN {$dbprefix}metastrings msvend ON mdend.value_id = msvend.id",
+	],
+	'wheres' => [
+		"(
+			mdstart.name_id = {$startdate_name_id}
+			AND
+			mdend.name_id = {$enddate_name_id}
+			AND (
+				(
+					CAST(msvend.string AS SIGNED) > {$start}
+					AND
+					CAST(msvend.string AS SIGNED) < {$end}
+				) OR (
+					CAST(msvstart.string AS SIGNED) > {$start}
+					AND
+					CAST(msvstart.string AS SIGNED) < {$end}
+				) OR (
+					CAST(msvstart.string AS SIGNED) < {$start}
+					AND
+					(
+						CAST(msvend.string AS SIGNED) = 0
+						OR
+						CAST(msvend.string AS SIGNED) > {$end}
+					)
+				)
+			)
+		)",
+	],
 ];
 
-if ($start) {
-	$options['metadata_name_value_pairs'][] = [
-		'name' => 'startdate',
-		'value' => strtotime($start),
-		'operand' => '>=',
-	];
-}
-if ($end) {
-	$options['metadata_name_value_pairs'][] = [
-		'name' => 'enddate',
-		'value' => strtotime($end),
-		'operand' => '<=',
-	];
-}
-
 $entities = elgg_get_entities_from_metadata($options);
-	
-// 	'' => [
-// 		'name' => 'startdate',
-// 		'value' => time(),
-// 		'operand' => '<',
-// 	],
 
 $result = [];
 
 foreach ($entities as $entity) {
+	$classes = [
+		'service-announcements-announcement-type',
+		"service-announcements-announcement-type-{$entity->announcement_type}",
+	];
+	if ($entity->isFinished()) {
+		$classes[] = 'service-announcements-announcement-finished';
+	}
 	$result[] = [
 		'title' => $entity->getDisplayName(),
-		'start' => gmdate('c', $entity->startdate),
-		'end' => gmdate('c', $entity->enddate),
-		//'allDay' => $event->isMultiDayEvent(),
+		'start' => $entity->getStartDate(),
+		'end' => $entity->getEndTimestamp() ? $entity->getEndDate() : gmdate('c', time()),
+		'allDay' => $entity->isMultiDay(),
 		'url' => $entity->getURL(),
-		'className' => "service-announcements-announcement-type service-announcements-announcement-type-{$entity->announcement_type}",
+		'className' => implode(' ', $classes),
 	];
 }
 
