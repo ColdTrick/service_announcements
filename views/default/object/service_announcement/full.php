@@ -88,9 +88,21 @@ $service_count = $entity->getServices([
 	'count' => true,
 ]);
 if (!empty($service_count)) {
-	$list = elgg_view_entity_list($entity->getServices(['limit' => false]), ['full_view' => false]);
+	$services = $entity->getServices([
+		'limit' => false,
+		'batch' => true,
+	]);
+	$list = [];
+	/* @var $service \Service */
+	foreach ($services as $service) {
+		$list[] = elgg_view('output/url', [
+			'text' => $service->getDisplayName(),
+			'href' => $service->getURL(),
+			'is_trusted' => true,
+		]);
+	}
 	
-	$body .= elgg_view_module('info', elgg_echo('service_announcements:service_announcements:edit:services'), $list);
+	$body .= elgg_view_module('info', elgg_echo('service_announcements:service_announcements:edit:services'), implode(', ', $list));
 }
 
 // status updates
