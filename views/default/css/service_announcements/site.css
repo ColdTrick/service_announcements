@@ -16,3 +16,10 @@
 	border-color: orange;
 	color: white;
 }
+
+.service-announcements-announcement-full-icon {
+	float: right;
+	margin: 5px;
+	padding: 5px;
+	border: 1px solid #CCCCCC;
+}

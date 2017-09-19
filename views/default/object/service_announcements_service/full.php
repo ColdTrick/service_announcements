@@ -10,7 +10,8 @@ if (!($entity instanceof Service)) {
 	return;
 }
 
-$icon = elgg_view_entity_icon($entity, 'tiny');
+// $icon = elgg_view_entity_icon($entity, 'small');
+$icon = '';
 
 // prepare summary
 $entity_menu = '';
@@ -33,10 +34,23 @@ $summary = elgg_view('object/elements/summary', $params);
 // prepare body
 $body = '';
 
-if (!empty($entity->description)) {
-	$body .= elgg_view_module('info', '', elgg_view('output/longtext', [
-		'value' => $entity->description,
-	]));
+if (!empty($entity->description) || $entity->hasIcon('medium')) {
+	$text_icon = '';
+	if ($entity->hasIcon('medium')) {
+		$text_icon = elgg_view_entity_icon($entity, 'medium', [
+			'href' => false,
+			'img_class' => 'service-announcements-announcement-full-icon',
+		]);
+	}
+	
+	$description = '';
+	if (!empty($entity->description)) {
+		$description = elgg_view('output/longtext', [
+			'value' => $entity->description,
+		]);
+	}
+	
+	$body .= elgg_view_module('info', '', $text_icon . $description);
 }
 
 // current announcements (incidents/maintenance)
