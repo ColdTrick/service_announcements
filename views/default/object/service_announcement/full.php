@@ -50,6 +50,15 @@ if (!empty($entity->announcement_type)) {
 	$general_info .= elgg_format_element('div', [], $type);
 }
 
+if (!empty($entity->priority)) {
+	$priority = $entity->priority;
+	if (elgg_language_key_exists("service_announcements:priority:{$priority}")) {
+		$priority = elgg_echo("service_announcements:priority:{$priority}");
+	}
+	
+	$general_info .= elgg_format_element('div', [], elgg_echo('service_announcements:priority') . ": {$priority}");
+}
+
 if (!empty($entity->startdate)) {
 	$start = elgg_echo('service_announcements:service_announcements:startdate');
 	$start .= ': ' . date('d/m/Y', $entity->startdate);
