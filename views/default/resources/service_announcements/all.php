@@ -1,4 +1,7 @@
 <?php
+/**
+ * List all current and upcomming announcements
+ */
 
 // title button
 elgg_register_title_button(null, 'add', 'object', ServiceAnnouncement::SUBTYPE);
@@ -10,13 +13,21 @@ $body = elgg_list_entities_from_metadata([
 	'type' => 'object',
 	'subtype' => ServiceAnnouncement::SUBTYPE,
 	'metadata_name_value_pairs' => [
-		'name' => 'startdate',
-		'value' => time(),
-		'operand' => '<',
+		[
+			'name' => 'enddate',
+			'value' => time(),
+			'operand' => '>',
+		],
+		[
+			'name' => 'enddate',
+			'value' => 0,
+			'operand' => '=',
+		],
 	],
+	'metadata_name_value_pairs_operator' => 'OR',
 	'order_by_metadata' => [
 		'name' => 'startdate',
-		'direction' => 'DESC',
+		'direction' => 'ASC',
 		'as' => 'integer',
 	],
 	'no_results' => elgg_echo('notfound'),

@@ -31,7 +31,7 @@ return [
 	'service_announcements:menu:title:service_announcement:status:update' => "Status update",
 	'service_announcements:menu:title:service_announcement:status:close' => "Close",
 	
-	'service_announcements:menu:filter:scheduled' => "Scheduled",
+	'service_announcements:menu:filter:past' => "Past",
 	'service_announcements:menu:filter:calendar' => "Calendar",
 	'service_announcements:menu:filter:staff' => "Staff",
 	
@@ -40,7 +40,7 @@ return [
 	
 	// pages
 	'service_announcements:service_announcements:all' => "All service announcements",
-	'service_announcements:service_announcements:scheduled' => "Scheduled service announcements",
+	'service_announcements:service_announcements:past' => "Past service announcements",
 	'service_announcements:service_announcements:calendar' => "All service announcements",
 	'service_announcements:service_announcements:add' => "Add a service announcement",
 	'service_announcements:service_announcements:edit' => "Edit service announcement: %s",

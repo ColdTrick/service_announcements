@@ -35,9 +35,9 @@ class Filter {
 		
 		// add new item
 		$return_value[] = \ElggMenuItem::factory([
-			'name' => 'scheduled',
-			'text' => elgg_echo('service_announcements:menu:filter:scheduled'),
-			'href' => 'service_announcements/scheduled',
+			'name' => 'past',
+			'text' => elgg_echo('service_announcements:menu:filter:past'),
+			'href' => 'service_announcements/past',
 			'priority' => 500,
 		]);
 		

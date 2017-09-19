@@ -107,9 +107,9 @@ class Router {
 				return true;
 				
 				break;
-			case 'scheduled':
+			case 'past':
 				
-				echo elgg_view_resource('service_announcements/scheduled');
+				echo elgg_view_resource('service_announcements/past');
 				return true;
 				
 				break;
