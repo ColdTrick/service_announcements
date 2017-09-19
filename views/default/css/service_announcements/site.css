@@ -7,8 +7,18 @@
 	grid-gap: 10px;
 }
 
-/* Site announcement calendar items */
-.fc-event.service-announcement-type-incident {
+.service-announcements-announcement-type {
+	padding: 0 5px;
+}
+.fc-event.service-announcements-announcement-type-maintenance,
+.service-announcements-announcement-type-maintenance {
+	background-color: #4787b8;	
+	border-color: #4787b8;
+	color: white;
+}
+.fc-event.service-announcements-announcement-type-incident,
+.service-announcements-announcement-type-incident {
 	background-color: orange;	
-	border-color: orange;	
+	border-color: orange;
+	color: white;
 }

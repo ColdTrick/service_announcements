@@ -46,7 +46,7 @@ foreach ($entities as $entity) {
 		'end' => gmdate('c', $entity->enddate),
 		//'allDay' => $event->isMultiDayEvent(),
 		'url' => $entity->getURL(),
-		'className' => "service-announcement-type-{$entity->announcement_type}",
+		'className' => "service-announcements-announcement-type service-announcements-announcement-type-{$entity->announcement_type}",
 	];
 }
 

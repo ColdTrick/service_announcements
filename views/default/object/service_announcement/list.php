@@ -10,7 +10,8 @@ if (!($entity instanceof ServiceAnnouncement)) {
 	return;
 }
 
-$icon = elgg_view_entity_icon($entity, 'tiny');
+// $icon = elgg_view_entity_icon($entity, 'tiny');
+$icon = '';
 
 $entity_menu = '';
 if (!elgg_in_context('widgets')) {

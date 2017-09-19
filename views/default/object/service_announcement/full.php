@@ -10,7 +10,8 @@ if (!($entity instanceof ServiceAnnouncement)) {
 	return;
 }
 
-$icon = elgg_view_entity_icon($entity, 'tiny');
+// $icon = elgg_view_entity_icon($entity, 'tiny');
+$icon = '';
 
 // prepare summary
 $entity_menu = '';
@@ -32,6 +33,21 @@ $summary = elgg_view('object/elements/summary', $params);
 
 // prepare body
 $body = '';
+
+if (!empty($entity->announcement_type)) {
+	$type = $entity->announcement_type;
+	if (elgg_language_key_exists("service_announcements:announcement_type:{$type}")) {
+		$type = elgg_echo("service_announcements:announcement_type:{$type}");
+	}
+	
+	$type = elgg_format_element('span', [
+		'class' => [
+			'service-announcements-announcement-type',
+			"service-announcements-announcement-type-{$entity->announcement_type}",
+		],
+	], $type);
+	$body .= elgg_format_element('div', [], $type);
+}
 
 if (!empty($entity->startdate)) {
 	$start = elgg_echo('service_announcements:service_announcements:startdate');
