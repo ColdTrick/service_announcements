@@ -156,7 +156,7 @@ class ServiceAnnouncement extends ElggObject {
 	/**
 	 * Returns the startdate and time for the announcement formatted as ISO-8601
 	 *
-	 * @param $format provide a format for the date
+	 * @param string $format provide a format for the date
 	 *
 	 * @see https://en.wikipedia.org/wiki/ISO_8601
 	 *
@@ -169,7 +169,7 @@ class ServiceAnnouncement extends ElggObject {
 	/**
 	 * Returns the startdate and time for the announcement formatted as ISO-8601
 	 *
-	 * @param $format provide a format for the date
+	 * @param string $format provide a format for the date
 	 *
 	 * @see https://en.wikipedia.org/wiki/ISO_8601
 	 *

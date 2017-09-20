@@ -403,9 +403,9 @@ class Notifications {
 				
 				// make a service announcement info block
 				$a_summary = $announcement->getDisplayName() . PHP_EOL;
-				$a_summary .= elgg_echo('service_announcements:service_announcements:startdate') . ': ' . date('d/m/Y', $announcement->startdate) . PHP_EOL;
+				$a_summary .= elgg_echo('service_announcements:service_announcements:startdate') . ': ' . $announcement->getStartDate('j-n-Y G:i') . PHP_EOL;
 				if (!empty($announcement->enddate)) {
-					$a_summary .= elgg_echo('service_announcements:service_announcements:enddate') . ': ' . date('d/m/Y', $announcement->enddate) . PHP_EOL;
+					$a_summary .= elgg_echo('service_announcements:service_announcements:enddate') . ': ' . $announcement->getEndDate('j-n-Y G:i') . PHP_EOL;
 				}
 				
 				$services = $announcement->getServices([

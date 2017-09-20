@@ -28,14 +28,14 @@ if (!empty($entity->announcement_type)) {
 
 if (!empty($entity->startdate)) {
 	$start = elgg_echo('service_announcements:service_announcements:startdate');
-	$start .= ': ' . date('d/m/Y', $entity->startdate);
+	$start .= ': ' . $entity->getStartDate('j-n-Y G:i');
 	
 	$byline[] = elgg_format_element('span', [], $start);
 }
 
 if (!empty($entity->enddate)) {
 	$end = elgg_echo('service_announcements:service_announcements:enddate');
-	$end .= ': ' . date('d/m/Y', $entity->enddate);
+	$end .= ': ' . $entity->getEndDate('j-n-Y G:i');
 	
 	$byline[] = elgg_format_element('span', [], $end);
 }
