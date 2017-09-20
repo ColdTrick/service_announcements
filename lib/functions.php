@@ -151,7 +151,7 @@ function service_announcements_prepare_service_announcement_vars(ServiceAnnounce
 					
 					break;
 				case 'enddate':
-					$result[$name] = !empty($entity->$name) ? $entity->name : null;
+					$result[$name] = !empty($entity->$name) ? $entity->$name : null;
 					break;
 				default:
 					$result[$name] = $entity->$name;
