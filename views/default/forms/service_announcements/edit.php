@@ -54,7 +54,7 @@ echo elgg_view_field([
 
 // start date
 echo elgg_view_field([
-	'#type' => 'datetimepicker',
+	'#type' => 'sa_datetimepicker',
 	'#label' => elgg_echo('service_announcements:service_announcements:startdate'),
 	'name' => 'startdate',
 	'value' => elgg_extract('startdate', $vars),
@@ -64,7 +64,7 @@ echo elgg_view_field([
 
 // end date
 echo elgg_view_field([
-	'#type' => 'datetimepicker',
+	'#type' => 'sa_datetimepicker',
 	'#label' => elgg_echo('service_announcements:service_announcements:enddate'),
 	'name' => 'enddate',
 	'value' => elgg_extract('enddate', $vars),
