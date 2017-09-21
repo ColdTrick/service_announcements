@@ -37,9 +37,10 @@ $body = '';
 if (!empty($entity->description) || $entity->hasIcon('medium')) {
 	$text_icon = '';
 	if ($entity->hasIcon('medium')) {
-		$text_icon = elgg_view_entity_icon($entity, 'medium', [
-			'href' => false,
-			'img_class' => 'service-announcements-announcement-full-icon',
+		$text_icon = elgg_view('output/img', [
+			'src' => $entity->getIconURL(['size' => 'medium']),
+			'class' => ['service-announcements-announcement-full-icon'],
+			'data-highres-url' => $entity->getIconURL(['size' => 'master']),
 		]);
 	}
 	
