@@ -5,6 +5,8 @@
  * @uses $vars['entity'] the ServiceAnnouncement to edit
  */
 
+elgg_require_js('forms/service_announcements/edit');
+
 /* @var $entity ServiceAnnouncement */
 $entity = elgg_extract('entity', $vars);
 

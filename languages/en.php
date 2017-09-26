@@ -86,6 +86,7 @@ return [
 	'service_announcements:priority:medium' => "Medium",
 	'service_announcements:priority:high' => "High",
 	'service_announcements:priority:critical' => "Critical",
+	'service_announcements:priority:critical:confirm' => "Are you sure this announcement has a critical priority?",
 	
 	// calendar
 	'service_announcements:calendar:today' => 'Today',
