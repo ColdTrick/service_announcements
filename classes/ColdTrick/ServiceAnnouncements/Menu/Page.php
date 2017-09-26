@@ -20,7 +20,7 @@ class Page {
 			'name' => 'services',
 			'text' => elgg_echo('service_announcements:menu:page:services'),
 			'href' => 'services/all',
-			'contexts' => ['service_announcements'],
+			'contexts' => ['service_announcements', 'services'],
 		]);
 		
 		return $returnvalue;
@@ -42,7 +42,7 @@ class Page {
 			'name' => 'service_announcements',
 			'text' => elgg_echo('service_announcements:menu:page:service_announcements'),
 			'href' => 'service_announcements/all',
-			'contexts' => ['services'],
+			'contexts' => ['services', 'service_announcements'],
 		]);
 		
 		return $returnvalue;
