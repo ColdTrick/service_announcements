@@ -9,8 +9,12 @@ define(['jquery'], function ($) {
 		ampm: false,
 		hideIfNoPrevNext: true,
 		onSelect: function(dateText, timepicker) {
-			var datepicker = timepicker.inst;
 			
+			var datepicker = timepicker;
+			if (typeof timepicker.inst !== 'undefined') {
+				datepicker = timepicker.inst;
+			}
+
 			if ($(this).is('.elgg-input-timestamp')) {
 				// convert to unix timestamp
 				var timestamp = Date.UTC(datepicker.selectedYear, datepicker.selectedMonth, datepicker.selectedDay, timepicker.hour, timepicker.minute);
