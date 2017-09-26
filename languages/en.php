@@ -170,6 +170,14 @@ The following maintenance has been scheduled for next week:
 %s
 ",
 	
+	// widgets
+	'widgets:service:name' => "Service",
+	'widgets:service:description' => "Show details about a service",
+	'widgets:service:edit:objectpicker' => "Search for the service to display",
+	'widgets:service:edit:service_guid' => "Enter the GUID of the service to display",
+	'widgets:service:edit:sections' => "Select which sections to display",
+	'widgets:service:no_service' => "No service has been configured yet.",
+	
 	// actions
 	// status update delete
 	'service_announcements:action:service_announcement:status_update:delete:error' => "An error occured while deleting the status update",
