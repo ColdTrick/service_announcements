@@ -7,6 +7,7 @@
  * @property string $announcement_type the type of the announcement
  * @property int    $startdate         startdate of the announcement
  * @property int    $enddate           enddate of the announcement
+ * @property int[]  $contact_user      an array of user_guids which are the contact person for this announcement
  */
 class ServiceAnnouncement extends ElggObject {
 	

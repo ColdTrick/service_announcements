@@ -27,12 +27,8 @@ $entity->title = $title;
 $entity->description = get_input('description');
 $entity->access_id = (int) get_input('access_id');
 
-$tags = string_to_tag_array(get_input('tags'));
-if (!empty($tags)) {
-	$entity->tags = $tags;
-} else {
-	unset($entity->tags);
-}
+$entity->tags = get_input('tags') ? string_to_tag_array(get_input('tags')) : null;
+$entity->contact_user = (array) get_input('contact_user');
 
 if ((bool) get_input('remove_icon', false)) {
 	$entity->deleteIcon();

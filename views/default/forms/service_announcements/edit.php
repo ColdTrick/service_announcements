@@ -71,6 +71,14 @@ echo elgg_view_field([
 	'timestamp' => true,
 ]);
 
+echo elgg_view_field([
+	'#type' => 'userpicker',
+	'#label' => elgg_echo('service_announcements:contact_user'),
+	'#help' => elgg_echo('service_announcements:contact_user:help'),
+	'name' => 'contact_user',
+	'values' => elgg_extract('contact_user', $vars),
+]);
+
 // announcement type
 echo elgg_view_field([
 	'#type' => 'select',

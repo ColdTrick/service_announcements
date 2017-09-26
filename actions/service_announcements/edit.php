@@ -45,6 +45,7 @@ $entity->enddate = !empty($enddate) ? $enddate : 0;
 
 $entity->setServices($services);
 
+$entity->contact_user = (array) get_input('contact_user');
 $entity->priority = get_input('priority') ?: null;
 $entity->announcement_type = get_input('announcement_type') ?: null;
 

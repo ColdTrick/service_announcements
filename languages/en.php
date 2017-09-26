@@ -9,6 +9,9 @@ return [
 	'services:add' => "Add service",
 	'service_announcements:add' => "Add service announcement",
 	
+	'service_announcements:contact_user' => "Contact person(s)",
+	'service_announcements:contact_user:help' => "You can add one or more users as a contact person. Search for part of their name and select them from the list.",
+	
 	'service_announcements:edit:icon' => "Icon",
 	'service_announcements:edit:icon:limit' => "Maximum allowed file size is %s",
 	'service_announcements:edit:remove_icon' => "Remove current icon",

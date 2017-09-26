@@ -69,6 +69,15 @@ echo elgg_view_field([
 	'value' => elgg_extract('tags', $vars),
 ]);
 
+// contact
+echo elgg_view_field([
+	'#type' => 'userpicker',
+	'#label' => elgg_echo('service_announcements:contact_user'),
+	'#help' => elgg_echo('service_announcements:contact_user:help'),
+	'name' => 'contact_user',
+	'values' => elgg_extract('contact_user', $vars),
+]);
+
 // access
 echo elgg_view_field([
 	'#type' => 'access',

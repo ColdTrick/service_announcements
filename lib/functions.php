@@ -82,6 +82,7 @@ function service_announcements_prepare_service_vars(Service $entity = null) {
 		'title' => '',
 		'description' => '',
 		'tags' => [],
+		'contact_user' => [],
 		'access_id' => get_default_access(null, [
 			'entity_type' => 'object',
 			'entity_subtype' => Service::SUBTYPE,
@@ -92,7 +93,18 @@ function service_announcements_prepare_service_vars(Service $entity = null) {
 	if ($entity instanceof Service) {
 		// edit
 		foreach ($result as $name => $value) {
-			$result[$name] = $entity->$name;
+			
+			switch ($name) {
+				case 'contact_user':
+					$result[$name] = $entity->$name;
+					if (!is_array($result[$name])) {
+						$result[$name] = [$result[$name]];
+					}
+					break;
+				default:
+					$result[$name] = $entity->$name;
+					break;
+			}
 		}
 		
 		$result['entity'] = $entity;
@@ -131,6 +143,7 @@ function service_announcements_prepare_service_announcement_vars(ServiceAnnounce
 		'tags' => [],
 		'startdate' => null,
 		'enddate' => null,
+		'contact_user' => [],
 		'announcement_type' => '',
 		'priority' => '',
 		'services' => (array) get_input('services', []),
@@ -152,6 +165,12 @@ function service_announcements_prepare_service_announcement_vars(ServiceAnnounce
 					break;
 				case 'enddate':
 					$result[$name] = !empty($entity->$name) ? $entity->$name : null;
+					break;
+				case 'contact_user':
+					$result[$name] = $entity->$name;
+					if (!is_array($result[$name])) {
+						$result[$name] = [$result[$name]];
+					}
 					break;
 				default:
 					$result[$name] = $entity->$name;

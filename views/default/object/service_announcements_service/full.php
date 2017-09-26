@@ -34,24 +34,52 @@ $summary = elgg_view('object/elements/summary', $params);
 // prepare body
 $body = '';
 
-if (!empty($entity->description) || $entity->hasIcon('medium')) {
-	$text_icon = '';
-	if ($entity->hasIcon('medium')) {
-		$text_icon = elgg_view('output/img', [
-			'src' => $entity->getIconURL(['size' => 'medium']),
-			'class' => ['service-announcements-announcement-full-icon'],
-			'data-highres-url' => $entity->getIconURL(['size' => 'master']),
+$general_info = '';
+
+// contact
+if (!empty($entity->contact_user)) {
+	$user_guids = (array) $entity->contact_user;
+	
+	$users = [];
+	foreach ($user_guids as $user_guid) {
+		$user = get_user($user_guid);
+		if (empty($user)) {
+			continue;
+		}
+		
+		$users[] = elgg_view('output/url', [
+			'text' => $user->getDisplayName(),
+			'href' => $user->getURL(),
+			'is_trusted' => true,
 		]);
 	}
 	
-	$description = '';
-	if (!empty($entity->description)) {
-		$description = elgg_view('output/longtext', [
-			'value' => $entity->description,
-		]);
+	if (!empty($users)) {
+		$contact = elgg_echo('service_announcements:contact_user');
+		$contact .= ': ' . implode(', ', $users);
+		
+		$general_info .= elgg_format_element('div', [], $contact);
 	}
-	
-	$body .= elgg_view_module('info', '', $text_icon . $description);
+}
+
+// icon
+if ($entity->hasIcon('medium')) {
+	$general_info .= elgg_view('output/img', [
+		'src' => $entity->getIconURL(['size' => 'medium']),
+		'class' => ['service-announcements-announcement-full-icon'],
+		'data-highres-url' => $entity->getIconURL(['size' => 'master']),
+	]);
+}
+
+// description
+if (!empty($entity->description)) {
+	$general_info .= elgg_view('output/longtext', [
+		'value' => $entity->description,
+	]);
+}
+
+if (!empty($general_info)) {
+	$body .= elgg_view_module('info', '', $general_info);
 }
 
 // current announcements (incidents/maintenance)

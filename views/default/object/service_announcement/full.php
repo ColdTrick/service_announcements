@@ -73,6 +73,31 @@ if (!empty($entity->enddate)) {
 	$general_info .= elgg_format_element('div', [], $end);
 }
 
+if (!empty($entity->contact_user)) {
+	$user_guids = (array) $entity->contact_user;
+	
+	$users = [];
+	foreach ($user_guids as $user_guid) {
+		$user = get_user($user_guid);
+		if (empty($user)) {
+			continue;
+		}
+		
+		$users[] = elgg_view('output/url', [
+			'text' => $user->getDisplayName(),
+			'href' => $user->getURL(),
+			'is_trusted' => true,
+		]);
+	}
+	
+	if (!empty($users)) {
+		$contact = elgg_echo('service_announcements:contact_user');
+		$contact .= ': ' . implode(', ', $users);
+		
+		$general_info .= elgg_format_element('div', [], $contact);
+	}
+}
+
 if (!empty($entity->description)) {
 	$general_info .= elgg_view('output/longtext', [
 		'value' => $entity->description,
