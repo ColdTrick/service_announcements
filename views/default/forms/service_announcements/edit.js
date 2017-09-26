@@ -10,6 +10,8 @@ define(function(require){
 				return false;
 			}
 		}
+		
+		return;
 	};
 	
 	$(document).on('submit', 'form.elgg-form-service-announcements-edit', submit_form);
