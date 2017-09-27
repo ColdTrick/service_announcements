@@ -16,5 +16,14 @@
 		<version>2.3</version>
 	</requires>
 	
+	<suggests>
+		<type>plugin</type>
+		<name>objectpicker</name>
+	</suggests>
+	<suggests>
+		<type>plugin</type>
+		<name>widget_manager</name>
+	</suggests>
+	
 	<category>ColdTrick</category>
 </plugin_manifest>
