@@ -57,11 +57,22 @@ foreach ($entities as $entity) {
 	if ($entity->isFinished()) {
 		$classes[] = 'service-announcements-announcement-finished';
 	}
+	
+	$multiday = $entity->isMultiDay();
+	$endts = $entity->getEndTimestamp();
+	if (empty($endts)) {
+		$endts = time();
+	}
+	
+	if ($multiday) {
+		$endts = strtotime('midnight +1day', $endts);
+	}
+	
 	$result[] = [
 		'title' => $entity->getDisplayName(),
 		'start' => $entity->getStartDate(),
-		'end' => $entity->getEndTimestamp() ? $entity->getEndDate() : gmdate('c', time()),
-		'allDay' => $entity->isMultiDay(),
+		'end' => date('c', $endts),
+		'allDay' => $multiday,
 		'url' => $entity->getURL(),
 		'className' => implode(' ', $classes),
 	];
