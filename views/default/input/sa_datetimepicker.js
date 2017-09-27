@@ -8,18 +8,15 @@ define(['jquery'], function ($) {
 		timeFormat: 'hh:mm',
 		ampm: false,
 		hideIfNoPrevNext: true,
-		onSelect: function(dateText, timepicker) {
+		onClose: function(dateText, timepicker) {
 			
-			var datepicker = timepicker;
-			if (typeof timepicker.inst !== 'undefined') {
-				datepicker = timepicker.inst;
-			}
-
 			if ($(this).is('.elgg-input-timestamp')) {
 				// convert to unix timestamp
-				var timestamp = Date.UTC(datepicker.selectedYear, datepicker.selectedMonth, datepicker.selectedDay, timepicker.hour, timepicker.minute);
-				
-				timestamp = timestamp / 1000;
+				var timestamp = '';
+				if (dateText.length) {
+					timestamp = Date.parse(dateText);
+					timestamp = timestamp / 1000;
+				}
 				
 				var id = $(this).attr('id');
 				$('input[name="' + id + '"]').val(timestamp);
