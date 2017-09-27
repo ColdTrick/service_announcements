@@ -175,6 +175,16 @@ The following maintenance has been scheduled for next week:
 	'widgets:service_announcements:name' => "Service announcements",
 	'widgets:service_announcements:description' => "Show a list of service announcements",
 	
+	'widgets:service_announcements:edit:period' => "Select timeframe to show",
+	'widgets:service_announcements:edit:period:current' => "Current announcements",
+	'widgets:service_announcements:edit:period:upcomming' => "Upcomming announcements",
+	'widgets:service_announcements:edit:period:past' => "Past announcements",
+	
+	'widgets:service_announcements:edit:service' => "Select service(s) to show announcements for",
+	'widgets:service_announcements:edit:service:help' => "Can be empty for all services. Search for a service and select it from the list.",
+	
+	'widgets:service_announcements:notfound' => "No service announcements found",
+	
 	// actions
 	// status update delete
 	'service_announcements:action:service_announcement:status_update:delete:error' => "An error occured while deleting the status update",
