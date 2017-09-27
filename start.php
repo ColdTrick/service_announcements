@@ -61,7 +61,6 @@ function service_announcements_init() {
 	
 	elgg_register_plugin_hook_handler('extender:url', 'annotation', '\ColdTrick\ServiceAnnouncements\Annotations::statusUpdateURL');
 	
-	elgg_register_plugin_hook_handler('handlers', 'widgets', '\ColdTrick\ServiceAnnouncements\Widgets::registerServiceWidget');
 	elgg_register_plugin_hook_handler('handlers', 'widgets', '\ColdTrick\ServiceAnnouncements\Widgets::registerServiceAnnouncementsWidget');
 	
 	// notifications
