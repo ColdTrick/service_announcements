@@ -2,14 +2,10 @@
 /**
  * Helper input for Services selection on ServiceAnnouncement add/edit page
  *
- * @see input/select
+ * @see input/checkboxes
  */
 
-$options_values = [];
-
-if (!(bool) elgg_extract('multiple', $vars)) {
-	$options_values[''] = elgg_echo('service_announcements:input:services:select');
-}
+$options = [];
 
 $services = elgg_get_entities([
 	'type' => 'object',
@@ -19,10 +15,12 @@ $services = elgg_get_entities([
 ]);
 /* @var $service Service */
 foreach ($services as $service) {
-	$options_values[$service->guid] = $service->getDisplayName();
+	$options[$service->getDisplayName()] = $service->guid;
 }
 
-$vars['class'] = elgg_extract_class($vars, ['elgg-input-services']);
-$vars['options_values'] = $options_values;
+uksort($options, 'strcasecmp');
 
-echo elgg_view('input/select', $vars);
+$vars['class'] = elgg_extract_class($vars, ['elgg-input-services']);
+$vars['options'] = $options;
+
+echo elgg_view('input/checkboxes', $vars);

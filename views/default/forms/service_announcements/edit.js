@@ -11,7 +11,13 @@ define(function(require){
 			}
 		}
 		
-		return;
+		if (!$(this).find('input[type="checkbox"][name="services[]"]:checked').length) {
+			if (!confirm(elgg.echo('service_announcements:service_announcements:edit:services:confirm'))) {
+				return false;
+			}
+		}
+		
+		return true;
 	};
 	
 	$(document).on('submit', 'form.elgg-form-service-announcements-edit', submit_form);

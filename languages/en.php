@@ -58,6 +58,7 @@ return [
 	// service announcements
 	'service_announcements:service_announcements:edit:services' => "Affected services",
 	'service_announcements:service_announcements:edit:services:help' => "Please select the services affected.",
+	'service_announcements:service_announcements:edit:services:confirm' => "Are you sure you wich to make this announcement without any affected services?",
 	'service_announcements:service_announcements:startdate' => "Start date",
 	'service_announcements:service_announcements:enddate' => "End date",
 	

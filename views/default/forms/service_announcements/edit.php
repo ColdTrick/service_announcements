@@ -50,8 +50,6 @@ echo elgg_view_field([
 	'#help' => elgg_echo('service_announcements:service_announcements:edit:services:help'),
 	'name' => 'services',
 	'value' => elgg_extract('services', $vars),
-	'required' => true,
-	'multiple' => true,
 ]);
 
 // start date
