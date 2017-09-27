@@ -34,13 +34,25 @@ class Filter {
 		}
 		
 		// change 'all' text
+		$all_found = false;
 		foreach ($return_value as $menu_item) {
 			if ($menu_item->getName() !== 'all') {
 				continue;
 			}
 			
+			$all_found = true;
 			$menu_item->setText(elgg_echo('service_announcements:menu:filter:all'));
 			break;
+		}
+		
+		if (!$all_found) {
+			// if not logged in this item may not be registered
+			$return_value[] = \ElggMenuItem::factory([
+				'name' => 'all',
+				'text' => elgg_echo('service_announcements:menu:filter:all'),
+				'href' => 'service_announcements/all',
+				'priority' => 200,
+			]);
 		}
 		
 		// add new item
