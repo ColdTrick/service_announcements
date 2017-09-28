@@ -65,6 +65,7 @@ return [
 	'service_announcements:service_announcements:edit:services' => "Affected services",
 	'service_announcements:service_announcements:edit:services:help' => "Please select the services affected.",
 	'service_announcements:service_announcements:edit:services:confirm' => "Are you sure you wich to make this announcement without any affected services?",
+	'service_announcements:service_announcements:edit:site_announcement' => "This service announcement is linked to a %s",
 	'service_announcements:service_announcements:startdate' => "Start date",
 	'service_announcements:service_announcements:enddate' => "End date",
 	
@@ -104,6 +105,9 @@ return [
 	// river
 	'river:create:object:service_announcement' => "%s made a service announcement: %s",
 	'river:status_update:object:service_announcement' => "%s posted an update on: %s",
+	
+	// site announcements
+	'service_announcements:site_announcements:edit:service_announcement' => "This announcement is linked to the service announcement: %s",
 	
 	// notifications
 	// status update: update

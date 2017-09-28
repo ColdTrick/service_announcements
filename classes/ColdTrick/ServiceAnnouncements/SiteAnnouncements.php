@@ -58,7 +58,7 @@ class SiteAnnouncements {
 	 *
 	 * @return false|\ElggObject
 	 */
-	protected static function getLinkedSiteAnnouncement(\ServiceAnnouncement $entity) {
+	public static function getLinkedSiteAnnouncement(\ServiceAnnouncement $entity) {
 		
 		$ia = elgg_set_ignore_access(true);
 		
@@ -105,7 +105,7 @@ class SiteAnnouncements {
 		$site_announcement->description = $description;
 		
 		$site_announcement->startdate = $entity->startdate;
-		$site_announcement->enddate = $entity->enddate ?: strtotime('+1day', $entity->startdate);
+		$site_announcement->enddate = $entity->enddate ?: strtotime('+1month', $entity->startdate);
 		$site_announcement->announcement_type = 'warning';
 		
 		$ia = elgg_set_ignore_access(true);
@@ -137,19 +137,10 @@ class SiteAnnouncements {
 		
 		$site_announcement->access_id = $entity->access_id;
 		
-		$description = $entity->getDisplayName();
-		$description .= ' ' . elgg_view('output/url', [
-			'text' => elgg_echo('more_info'),
-			'href' => $entity->getURL(),
-			'is_trusted' => true,
-		]);
-		
-		$site_announcement->description = $description;
-		
 		$site_announcement->startdate = $entity->startdate;
 		
 		if ($entity->priority === 'critical') {
-			$site_announcement->enddate = $entity->enddate ?: strtotime('+1day', $entity->startdate);
+			$site_announcement->enddate = $entity->enddate ?: strtotime('+1month', $entity->startdate);
 		} else {
 			$site_announcement->enddate = time();
 		}

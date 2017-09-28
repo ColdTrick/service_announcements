@@ -82,6 +82,8 @@ function service_announcements_init() {
 	
 	// extend views
 	elgg_extend_view('service_announcements/services/sidebar', 'service_announcements/services/sidebar/subscriptions');
+	elgg_extend_view('forms/service_announcements/edit', 'service_announcements/service_announcement/extends/edit');
+	elgg_extend_view('forms/site_announcements/edit', 'service_announcements/service_announcement/extends/site_announcement');
 	
 	// register actions
 	elgg_register_action('services/edit', dirname(__FILE__) . '/actions/services/edit.php');
