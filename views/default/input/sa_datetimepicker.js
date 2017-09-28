@@ -14,7 +14,7 @@ define(['jquery'], function ($) {
 				// convert to unix timestamp
 				var timestamp = '';
 				if (dateText.length) {
-					timestamp = Date.parse(dateText);
+					timestamp = Date.parse(dateText + ':00+00:00');
 					timestamp = timestamp / 1000;
 				}
 				
