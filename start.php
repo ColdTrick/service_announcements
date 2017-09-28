@@ -43,6 +43,8 @@ function service_announcements_init() {
 	elgg_register_event_handler('update:after', 'object', '\ColdTrick\ServiceAnnouncements\Access::updateAnnotationAccess');
 	elgg_register_event_handler('update:after', 'object', '\ColdTrick\ServiceAnnouncements\SiteAnnouncements::afterServiceAnnouncementUpdate');
 	
+	elgg_register_event_handler('steps', 'wizard', '\ColdTrick\ServiceAnnouncements\Wizard::saveServicesSubscriptions');
+	
 	// plugin hooks
 	elgg_register_plugin_hook_handler('container_permissions_check', 'object', '\ColdTrick\ServiceAnnouncements\Permissions::serviceContainerPermissions');
 	elgg_register_plugin_hook_handler('container_permissions_check', 'object', '\ColdTrick\ServiceAnnouncements\Permissions::serviceAnnouncementContainerPermissions');
@@ -64,6 +66,8 @@ function service_announcements_init() {
 	
 	elgg_register_plugin_hook_handler('handlers', 'widgets', '\ColdTrick\ServiceAnnouncements\Widgets::registerServiceAnnouncementsWidget');
 	
+	elgg_register_plugin_hook_handler('replacements', 'wizard', '\ColdTrick\ServiceAnnouncements\Wizard::applyServicesReplacement');
+	
 	// notifications
 	elgg_register_notification_event('annotation', 'status_update_update');
 	elgg_register_notification_event('annotation', 'status_update_close');
@@ -84,6 +88,7 @@ function service_announcements_init() {
 	elgg_extend_view('service_announcements/services/sidebar', 'service_announcements/services/sidebar/subscriptions');
 	elgg_extend_view('forms/service_announcements/edit', 'service_announcements/service_announcement/extends/edit');
 	elgg_extend_view('forms/site_announcements/edit', 'service_announcements/service_announcement/extends/site_announcement');
+	elgg_extend_view('wizard/replacement_helper', 'service_announcements/wizard/replacement');
 	
 	// register actions
 	elgg_register_action('services/edit', dirname(__FILE__) . '/actions/services/edit.php');

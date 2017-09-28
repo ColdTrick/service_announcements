@@ -39,3 +39,7 @@
 	width: 25%;
 	box-sizing: border-box;
 }
+.elgg-page-wizard .elgg-input-services li {
+	list-style: none;
+	width: 20%;
+}

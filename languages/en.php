@@ -109,6 +109,11 @@ return [
 	// site announcements
 	'service_announcements:site_announcements:edit:service_announcement' => "This announcement is linked to the service announcement: %s",
 	
+	// wizard
+	'service_announcements:wizard:replacements' => "You can integrate support for Service Announcements in your wizard by using the following replacements.",
+	'service_announcements:wizard:replacements:services' => "Services",
+	'service_announcements:wizard:replacements:services:label' => "Services",
+	
 	// notifications
 	// status update: update
 	'service_announcements:notification:status_update:update:subject' => "A new status update has been posted for: %s",
