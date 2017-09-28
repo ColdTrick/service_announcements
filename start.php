@@ -41,6 +41,7 @@ function service_announcements_init() {
 	
 	// events
 	elgg_register_event_handler('update:after', 'object', '\ColdTrick\ServiceAnnouncements\Access::updateAnnotationAccess');
+	elgg_register_event_handler('update:after', 'object', '\ColdTrick\ServiceAnnouncements\SiteAnnouncements::afterServiceAnnouncementUpdate');
 	
 	// plugin hooks
 	elgg_register_plugin_hook_handler('container_permissions_check', 'object', '\ColdTrick\ServiceAnnouncements\Permissions::serviceContainerPermissions');
