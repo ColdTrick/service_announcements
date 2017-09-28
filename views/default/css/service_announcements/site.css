@@ -30,3 +30,12 @@
 	padding: 5px;
 	border: 1px solid #CCCCCC;
 }
+
+.elgg-input-services {
+	display: flex;
+	flex-wrap: wrap;
+}
+.elgg-input-services li {
+	width: 25%;
+	box-sizing: border-box;
+}
