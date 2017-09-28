@@ -19,6 +19,12 @@ return [
 	
 	'service_announcements:service_announcements:error:no_services' => "No services were found in the system, create at least one service before continueing",
 	
+	// settings
+	'service_announcements:settings:site_announcements' => "Site announcements integration",
+	'service_announcements:settings:site_announcements:not_enabled' => "The Site announcements plugin is not active",
+	'service_announcements:settings:site_announcements:critical_incident' => "When a critical incident is created also create a Site announcement",
+	'service_announcements:settings:site_announcements:critical_incident:help' => "The Site announcement will be linked to the incident, if the incident is closed so will the Site announcement.",
+	
 	// breadcrumbs
 	'service_announcements:breadcrumb:service_announcements:all' => "Service announcements",
 	'service_announcements:breadcrumb:services:all' => "Services",

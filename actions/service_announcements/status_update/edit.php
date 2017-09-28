@@ -20,6 +20,7 @@ $allow_empty = false;
 switch ($type) {
 	case 'close':
 		$entity->enddate = time();
+		$entity->save(); // triggers update events
 		$allow_empty = true;
 	default:
 		
