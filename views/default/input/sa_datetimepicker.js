@@ -14,8 +14,13 @@ define(['jquery'], function ($) {
 				// convert to unix timestamp
 				var timestamp = '';
 				if (dateText.length) {
-					timestamp = Date.parse(dateText + ':00+00:00');
+					// use datepicker function because of IE issues
+					var date = $.datepicker.parseDateTime('yy-mm-dd', 'hh:mm', dateText);
+					timestamp = Date.parse(date.toString());
 					timestamp = timestamp / 1000;
+					
+					// apply timezone offset to GMT
+					timestamp = timestamp - (date.getTimezoneOffset() * 60);
 				}
 				
 				var id = $(this).attr('id');
