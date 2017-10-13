@@ -41,4 +41,32 @@ class Access {
 			$annotation->save();
 		}
 	}
+	
+	/**
+	 * Set the options for the input/access on service (announcement) edit form
+	 *
+	 * @param string $hook         the name of the hook
+	 * @param string $type         the type of the hook
+	 * @param array  $return_value current return value
+	 * @param array  $params       supplied params
+	 *
+	 * @return void|array
+	 */
+	public static function accessArray($hook, $type, $return_value, $params) {
+		
+		$input_params = elgg_extract('input_params', $params, []);
+		if (empty($input_params)) {
+			return;
+		}
+		
+		$entity_subtype = elgg_extract('entity_subtype', $input_params);
+		if (!in_array($entity_subtype, [\Service::SUBTYPE, \ServiceAnnouncement::SUBTYPE])) {
+			return;
+		}
+		
+		return [
+			ACCESS_LOGGED_IN => elgg_echo('LOGGED_IN'),
+			ACCESS_PUBLIC => elgg_echo('PUBLIC'),
+		];
+	}
 }

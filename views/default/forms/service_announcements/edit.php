@@ -109,10 +109,6 @@ echo elgg_view_field([
 	'entity_subtype' => ServiceAnnouncement::SUBTYPE,
 	'container_guid' => elgg_get_site_entity()->guid,
 	'entity' => $entity,
-	'options_values' => [
-		ACCESS_LOGGED_IN => elgg_echo('LOGGED_IN'),
-		ACCESS_PUBLIC => elgg_echo('PUBLIC'),
-	],
 ]);
 
 // footer

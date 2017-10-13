@@ -50,6 +50,7 @@ function service_announcements_init() {
 	elgg_register_plugin_hook_handler('container_permissions_check', 'object', '\ColdTrick\ServiceAnnouncements\Permissions::serviceAnnouncementContainerPermissions');
 	elgg_register_plugin_hook_handler('permissions_check', 'object', '\ColdTrick\ServiceAnnouncements\Permissions::servicePermissions');
 	elgg_register_plugin_hook_handler('permissions_check', 'object', '\ColdTrick\ServiceAnnouncements\Permissions::serviceAnnouncementPermissions');
+	elgg_register_plugin_hook_handler('access:collections:write', 'all', '\ColdTrick\ServiceAnnouncements\Access::accessArray', 999);
 	
 	elgg_register_plugin_hook_handler('register', 'menu:site', '\ColdTrick\ServiceAnnouncements\Menu\Site::registerServiceAnnouncements');
 	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\ServiceAnnouncements\Menu\Page::registerServices');
