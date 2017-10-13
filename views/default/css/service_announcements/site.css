@@ -43,3 +43,10 @@
 	list-style: none;
 	width: 20%;
 }
+
+.elgg-form-service-announcements-edit .elgg-user-picker input[name='match_on'],
+.elgg-form-service-announcements-edit .elgg-user-picker > label,
+.elgg-form-services-edit .elgg-user-picker input[name='match_on'],
+.elgg-form-services-edit .elgg-user-picker > label {
+	display: none;
+}
