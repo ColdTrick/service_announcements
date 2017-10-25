@@ -1,10 +1,45 @@
 <?php
 /**
- * This file was created by Translation Editor v6.0-beta
- * On 2017-09-19 16:55
+ * This file was created by Translation Editor v6.0
+ * On 2017-10-25 17:07
  */
 
 return array (
+  'service_announcements:contact_user' => 'Contact personen',
+  'service_announcements:contact_user:help' => 'Je kunt één of meerdere gebruikers toevoegen als contact persoon. Zoek op een gedeelte van hun naam en selecteer de persoon uit de lijst.',
+  'service_announcements:settings:site_announcements' => 'Aankondigingen integratie',
+  'service_announcements:settings:site_announcements:not_enabled' => 'De Site announcements plugin is niet geactiveerd',
+  'service_announcements:settings:site_announcements:critical_incident' => 'Als er een kritiek incident wordt aangemaakt, maak ook een Aankondiging aan',
+  'service_announcements:settings:site_announcements:critical_incident:help' => 'De Aankondiging zal worden gekoppeld aan het incident, als het incident wordt gesloten zal ook de Aankondiging worden gesloten.',
+  'service_announcements:service_announcements:edit:services:confirm' => 'Weet je zeker dat je een onderhoudsaankondiging wilt aanmaken zonder getroffen diensten?',
+  'service_announcements:service_announcements:edit:site_announcement' => 'Deze onderhoudsaankondiging is gekoppeld aan %s',
+  'service_announcements:priority:critical:confirm' => 'Weet je zeker dat deze onderhoudsaankondiging een kritieke prioriteit heeft?',
+  'service_announcements:site_announcements:edit:service_announcement' => 'Deze aankondiging is gekoppeld aan de onderhoudsaankondiging: %s',
+  'service_announcements:wizard:replacements' => 'Je kunt Service Announcements integreren in je wizard door de volgende vervangingen te gebruiker.',
+  'service_announcements:wizard:replacements:services:label' => 'Diensten',
+  'service_announcements:wizard:replacements:services' => 'Diensten',
+  'service_announcements:notification:service_announcement:maintenance:subject' => 'Nieuw onderhoud: %s',
+  'service_announcements:notification:service_announcement:maintenance:summary' => 'Nieuw onderhoud: %s',
+  'service_announcements:notification:service_announcement:maintenance:body' => 'Beste %s,
+
+Nieuw onderhoud: %s
+
+%s
+
+Dit onderhoud treft de volgende diensten:
+%s
+
+Om naar de onderhoudsmelding te gaan, klik hier:
+%s',
+  'widgets:service_announcements:name' => 'Onderhoudsaankondigingen',
+  'widgets:service_announcements:description' => 'Toon een lijst met onderhoudsaankondigingen',
+  'widgets:service_announcements:edit:period' => 'Selecteer een tijdsvlak on te tonen',
+  'widgets:service_announcements:edit:period:current' => 'Huidige onderhoudsaankondigingen',
+  'widgets:service_announcements:edit:period:upcomming' => 'Geplande onderhoudsaankondigingen',
+  'widgets:service_announcements:edit:period:past' => 'Verlopen onderhoudsaankondigingen',
+  'widgets:service_announcements:edit:service' => 'Selecteer de dienst(en) om de onderhoudsaankondigingen voor te tonen',
+  'widgets:service_announcements:edit:service:help' => 'Kan leeg blijven voor alle diensten. Zoek naar een dienst en selecteer deze uit de lijst.',
+  'widgets:service_announcements:notfound' => 'Geen onderhoudsaankondigingen gevonden',
   'item:object:service_announcements_service' => 'Dienst',
   'item:object:service_announcement' => 'Onderhoudsaankondiging',
   'services:add' => 'Dienst toevoegen',
