@@ -132,6 +132,7 @@ class Notifications {
 	
 	/**
 	 * Prevent notifications for ServiceAnnouncements of the 'maintenance' type
+	 * if scheduled for next week
 	 *
 	 * @param string $hook         the name of the hook
 	 * @param string $type         the type of the hook
@@ -153,6 +154,11 @@ class Notifications {
 		}
 		
 		if ($entity->announcement_type !== 'maintenance') {
+			return;
+		}
+		
+		if (strtotime('sunday', $entity->getStartTimestamp()) <= strtotime('sunday this week')) {
+			// maintenance this week, so not picked up by weekly summary
 			return;
 		}
 		
@@ -220,21 +226,21 @@ class Notifications {
 			return;
 		}
 		
+		$affected_services = $announcement->getServices([
+			'limit' => false,
+			'batch' => true,
+		]);
+		$services = [];
+		/* @var $affected_services \Service */
+		foreach ($affected_services as $service) {
+			$services[] = elgg_view('output/url', [
+				'text' => $service->getDisplayName(),
+				'href' => $service->getURL(),
+			]);
+		}
+		
 		switch ($announcement->announcement_type) {
 			case 'incident':
-				
-				$affected_services = $announcement->getServices([
-					'limit' => false,
-					'batch' => true,
-				]);
-				$services = [];
-				/* @var $affected_services \Service */
-				foreach ($affected_services as $service) {
-					$services[] = elgg_view('output/url', [
-						'text' => $service->getDisplayName(),
-						'href' => $service->getURL(),
-					]);
-				}
 				
 				$return_value->subject = elgg_echo('service_announcements:notification:service_announcement:incident:subject', [
 					$announcement->getDisplayName(),
@@ -243,6 +249,22 @@ class Notifications {
 					$announcement->getDisplayName(),
 				], $language);
 				$return_value->body = elgg_echo('service_announcements:notification:service_announcement:incident:body', [
+					$recipient->getDisplayName(),
+					$announcement->getDisplayName(),
+					$announcement->description,
+					implode(PHP_EOL, $services),
+					$announcement->getURL(),
+				], $language);
+				break;
+			case 'maintenance':
+				
+				$return_value->subject = elgg_echo('service_announcements:notification:service_announcement:maintenance:subject', [
+					$announcement->getDisplayName(),
+				], $language);
+				$return_value->summary = elgg_echo('service_announcements:notification:service_announcement:maintenance:summary', [
+					$announcement->getDisplayName(),
+				], $language);
+				$return_value->body = elgg_echo('service_announcements:notification:service_announcement:maintenance:body', [
 					$recipient->getDisplayName(),
 					$announcement->getDisplayName(),
 					$announcement->description,

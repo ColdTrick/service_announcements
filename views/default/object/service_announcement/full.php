@@ -13,6 +13,9 @@ if (!($entity instanceof ServiceAnnouncement)) {
 // $icon = elgg_view_entity_icon($entity, 'tiny');
 $icon = '';
 
+echo strtotime('sunday this week') . '<br />';
+echo strtotime('sunday', $entity->getStartTimestamp());
+
 // prepare summary
 $entity_menu = '';
 if (!elgg_in_context('widgets')) {

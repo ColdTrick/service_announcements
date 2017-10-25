@@ -162,6 +162,21 @@ To view the incident, click here:
 %s
 ",
 	
+	'service_announcements:notification:service_announcement:maintenance:subject' => "New maintenance: %s",
+	'service_announcements:notification:service_announcement:maintenance:summary' => "New maintenance: %s",
+	'service_announcements:notification:service_announcement:maintenance:body' => "Hi %s,
+
+New maintenance: %s
+
+%s
+
+This maintenance affects the following services:
+%s
+
+To view the maintenance, click here:
+%s
+",
+	
 	// service announcement: maintenace (scheduled)
 	'service_announcements:notification:service_announcement:maintenace:scheduled:site:subject' => "New scheduled maintenance: %s",
 	'service_announcements:notification:service_announcement:maintenace:scheduled:site:summary' => "New scheduled maintenance: %s",
