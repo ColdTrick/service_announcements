@@ -41,6 +41,10 @@ $entity->access_id = (int) get_input('access_id');
 $entity->tags = get_input('tags') ? string_to_tag_array(get_input('tags')) : null;
 
 $entity->startdate = $startdate;
+if (!$new && (empty($entity->enddate) || $entity->enddate > time()) && !empty($enddate) && ($enddate < time())) {
+	// closing the announcement using the edit form
+	$entity->statusUpdate('close');
+}
 $entity->enddate = !empty($enddate) ? $enddate : 0;
 
 $entity->setServices($services);

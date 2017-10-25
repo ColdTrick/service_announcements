@@ -211,4 +211,14 @@ class ServiceAnnouncement extends ElggObject {
 		
 		return $end < time();
 	}
+	
+	/**
+	 * @param string $type the type of the status update (status or close)
+	 * @param string $text the text of the status update
+	 *
+	 * @return false|int
+	 */
+	public function statusUpdate($type, $text = '') {
+		return $this->annotate("status_update_{$type}", $text, $this->access_id);
+	}
 }

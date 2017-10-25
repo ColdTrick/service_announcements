@@ -28,7 +28,7 @@ switch ($type) {
 			return elgg_error_response(elgg_echo('error:missing_data'));
 		}
 		
-		$result = $entity->annotate("status_update_{$type}", $text, $entity->access_id);
+		$result = $entity->statusUpdate($type, $text);
 		break;
 }
 
