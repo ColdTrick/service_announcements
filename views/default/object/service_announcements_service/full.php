@@ -10,7 +10,6 @@ if (!($entity instanceof Service)) {
 	return;
 }
 
-// $icon = elgg_view_entity_icon($entity, 'small');
 $icon = '';
 
 // prepare summary

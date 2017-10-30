@@ -5,8 +5,6 @@ elgg_load_js('jquery.slider');
 elgg_load_css('jquery.timepicker');
 elgg_load_css('jquery.slider');
 
-elgg_require_js('input/sa_datetimepicker');
-
 $vars['class'] = elgg_extract_class($vars, ['elgg-input-sa-datetime']);
 
 $defaults = [
@@ -24,18 +22,21 @@ if ($timestamp) {
 	echo elgg_view_field([
 		'#type' => 'hidden',
 		'name' => elgg_extract('name', $vars),
-		'value' => elgg_extract('value', $vars),
 	]);
 
 	$vars['class'][] = 'elgg-input-timestamp';
 	$vars['id'] = elgg_extract('name', $vars);
 	unset($vars['name']);
 	unset($vars['internalname']);
+	
+	$value = elgg_extract('value', $vars);
+	
+	echo elgg_format_element('script', [], 'require(["input/sa_datetimepicker"], function(DateTimePicker){ DateTimePicker.init("#' . $vars['id'] . '", "' . $value . '"); });');
 }
 
 // convert timestamps to text for display
 if (is_numeric($vars['value'])) {
-	$vars['value'] = gmdate('Y-m-d H:i', elgg_extract('value', $vars));
+	$vars['value'] = date('Y-m-d H:i', elgg_extract('value', $vars));
 }
 
 echo elgg_view_field($vars);

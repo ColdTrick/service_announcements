@@ -12,7 +12,6 @@ if (!($entity instanceof ServiceAnnouncement)) {
 	return;
 }
 
-// $icon = elgg_view_entity_icon($entity, 'tiny');
 $icon = '';
 
 $entity_menu = '';

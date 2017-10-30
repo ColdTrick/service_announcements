@@ -164,7 +164,7 @@ class ServiceAnnouncement extends ElggObject {
 	 * @return string a formatted date string
 	 */
 	public function getStartDate($format = 'c') {
-		return gmdate($format, $this->getStartTimestamp());
+		return date($format, $this->getStartTimestamp());
 	}
 	
 	/**
@@ -177,7 +177,7 @@ class ServiceAnnouncement extends ElggObject {
 	 * @return string a formatted date string
 	 */
 	public function getEndDate($format = 'c') {
-		return gmdate($format, $this->getEndTimestamp());
+		return date($format, $this->getEndTimestamp());
 	}
 	
 	/**

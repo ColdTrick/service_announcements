@@ -18,6 +18,16 @@ if (!empty($enddate)) {
 	}
 }
 
+if (!empty($startdate)) {
+	$tempdate = new DateTime(gmdate('d-m-Y H:i', $startdate));
+	$startdate = $tempdate->getTimestamp();
+}
+
+if (!empty($enddate)) {
+	$tempdate = new DateTime(gmdate('d-m-Y H:i', $enddate));
+	$enddate = $tempdate->getTimestamp();
+}
+
 $guid = (int) get_input('guid');
 $new = false;
 if (!empty($guid)) {
