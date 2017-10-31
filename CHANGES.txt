@@ -1,2 +1,6 @@
 Version history
 ===============
+
+1.0.0-rc.1 (2017-10-31):
+
+- first release
