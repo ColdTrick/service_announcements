@@ -43,7 +43,7 @@ $options = [
 	],
 	'order_by_metadata' => [
 		'name' => 'startdate',
-		'direction' => 'ASC',
+		'direction' => 'DESC',
 		'as' => 'integer',
 	],
 ];

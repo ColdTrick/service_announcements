@@ -38,7 +38,7 @@ $body = elgg_list_entities_from_metadata([
 	],
 	'order_by_metadata' => [
 		'name' => 'startdate',
-		'direction' => 'ASC',
+		'direction' => 'DESC',
 		'as' => 'integer',
 	],
 	'no_results' => elgg_echo('notfound'),
