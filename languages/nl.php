@@ -1,10 +1,13 @@
 <?php
 /**
  * This file was created by Translation Editor v6.0
- * On 2017-10-25 17:07
+ * On 2017-11-08 13:58
  */
 
 return array (
+  'service_announcements:menu:filter:upcomming' => 'Gepland',
+  'service_announcements:service_announcements:upcomming' => 'Geplande onderhoudsmeldingen',
+  'service_announcements:service_announcements:all' => 'Huidige onderhoudsaankondigingen',
   'service_announcements:contact_user' => 'Contact personen',
   'service_announcements:contact_user:help' => 'Je kunt één of meerdere gebruikers toevoegen als contact persoon. Zoek op een gedeelte van hun naam en selecteer de persoon uit de lijst.',
   'service_announcements:settings:site_announcements' => 'Aankondigingen integratie',
@@ -63,7 +66,6 @@ Om naar de onderhoudsmelding te gaan, klik hier:
   'service_announcements:menu:filter:staff' => 'Medewerkers',
   'service_announcements:menu:user_hover:staff:assign' => 'Maak onderhoudsmedewerker',
   'service_announcements:menu:user_hover:staff:unassign' => 'Verwijder als onderhoudsmedewerker',
-  'service_announcements:service_announcements:all' => 'Huidige en aanstaande onderhoudsaankondiging',
   'service_announcements:service_announcements:past' => 'Verlopen onderhoudsaankondigingen',
   'service_announcements:service_announcements:calendar' => 'Onderhoudsaankondigingen',
   'service_announcements:service_announcements:add' => 'Voeg een onderhoudsaankondiging toe',
