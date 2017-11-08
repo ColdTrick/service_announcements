@@ -43,18 +43,20 @@ return [
 	'service_announcements:menu:filter:past' => "Past",
 	'service_announcements:menu:filter:calendar' => "Calendar",
 	'service_announcements:menu:filter:staff' => "Staff",
+	'service_announcements:menu:filter:upcomming' => "Upcomming",
 	
 	'service_announcements:menu:user_hover:staff:assign' => "Make service announcements staff",
 	'service_announcements:menu:user_hover:staff:unassign' => "Remove service announcments staff",
 	
 	// pages
-	'service_announcements:service_announcements:all' => "Current and upcomming service announcements",
+	'service_announcements:service_announcements:all' => "Current service announcements",
 	'service_announcements:service_announcements:past' => "Past service announcements",
 	'service_announcements:service_announcements:calendar' => "Service announcements",
 	'service_announcements:service_announcements:add' => "Add a service announcement",
 	'service_announcements:service_announcements:edit' => "Edit service announcement: %s",
 	'service_announcements:service_announcements:status_update' => "Status update for: %s",
 	'service_announcements:service_announcements:staff' => "Service announcements staff",
+	'service_announcements:service_announcements:upcomming' => "Upcomming service announcements",
 	
 	'service_announcements:services:all' => "All services",
 	'service_announcements:services:add' => 'Add a service',

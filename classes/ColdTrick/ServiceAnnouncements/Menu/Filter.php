@@ -57,10 +57,17 @@ class Filter {
 		
 		// add new item
 		$return_value[] = \ElggMenuItem::factory([
+			'name' => 'upcomming',
+			'text' => elgg_echo('service_announcements:menu:filter:upcomming'),
+			'href' => 'service_announcements/upcomming',
+			'priority' => 500,
+		]);
+		
+		$return_value[] = \ElggMenuItem::factory([
 			'name' => 'past',
 			'text' => elgg_echo('service_announcements:menu:filter:past'),
 			'href' => 'service_announcements/past',
-			'priority' => 500,
+			'priority' => 550,
 		]);
 		
 		$return_value[] = \ElggMenuItem::factory([

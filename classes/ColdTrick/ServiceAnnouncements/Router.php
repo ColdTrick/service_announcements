@@ -119,6 +119,12 @@ class Router {
 				return true;
 				
 				break;
+			case 'upcomming':
+				
+				echo elgg_view_resource('service_announcements/upcomming');
+				return true;
+				
+				break;
 			default:
 				forward('service_announcements/all');
 				break;
